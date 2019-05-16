@@ -1,0 +1,26 @@
+--Fase 1: 
+	-falta diagrama de secuencias
+--Fase 2:
+	-Base datos: +restricciones, 
+	+vista "calendario"(info para cada año de las actividades planificadas y 			realizadas del socio organizador-->fecha de la actividad, descripcion del tipo
+	de actividad, descripcion de la actividad, precio si es diferente de 0.0 y 			nombre y apellido del socio que la organiza//si la actividad ya se ha realizado 		mostrar info de asistentes o motivo suspensión), fichero para la carga de datos 		inicial de BD si es necesario. 
+	
+	-Java: código, conexión(clase que gestione e incluya los parámetros de la 			conexión), acceso a datos, cada una de las tablas de BD debe tener una única 			clase de acceso a datos, interfaces (en una carpeta llamada "Views" y solo 		deben tener llamadas a los controladores que se desarrollen más adelante)
+
+	--Procedimientos almacenados (mínimo un paquete de procedimientos que incluyan 			procedimientos que mejoren la eficiencia del sistema)
+	--Desarrollo de los controladores de las vistas(en una carpeta llamada 				"Controllers"-->JAVA)
+
+-Fase 3:
+	-pruebas de funcionamiento, optimización, documentación del proyecto,
+	creación del ejecutable y la preparación de la presentación.
+	-fichero con las pruebas unitarias y capturas con sus respectivos resultados, 
+	documentación(documentación javadoc y manual de usuario(explicar como poner 	todos los elementos del sistema en marcha desde 0)), ejecutable obtenido desde 	el IDE utilizado para el desarrollo, presentación.
+
+
+
+
+-TENER EN CUENTA:
+	-Los socios deberán abonar su cuota antes del 31/12 del año anterior al que
+	corresponde la cuota, si no, se le dará de baja a él y los socios de los que sea
+	responsable.!!!!!!!!!!!!
+
