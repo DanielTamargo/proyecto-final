@@ -45,4 +45,4 @@ DUDAS:
 4- Si cargo un valor null no pasa nada, puesto que se guarda como valor null en la lista y ya, verdad?
 5- Por cada clase (Socio, Cuota, Actividad) necesitamos una que gestione los datos que vamos a coger desde la BBDD (SocioBD, CuotaBD, ActividadBD)?
 6- Si la select no da resultados, el rs (ResultSet) será null y se puede utilizar en un if? (if rs!=null) 
-7- 
+7- Ficheros, SQLite, JSon, HTTP, ¿tenemos que hacer algo con eso? ¿O son solo apuntes para poder ir aprendiendo otras cosas?
