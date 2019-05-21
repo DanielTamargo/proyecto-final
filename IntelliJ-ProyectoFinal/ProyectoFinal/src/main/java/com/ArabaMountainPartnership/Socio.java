@@ -1,7 +1,9 @@
 package com.ArabaMountainPartnership;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Socio {
@@ -24,6 +26,32 @@ public class Socio {
     private List<Actividad> actividadesOrganizadas = new ArrayList<>();
 
     public Socio() {
+    }
+
+    //constructor desde SocioBD
+    public Socio(String codigo, String nombre, String apellidos, Date fechaNac, String dni, int telefono,
+                 String email, String perfil, Date fechaAlta, Date fechaBaja, String haPagado, Cuota cuota,
+                 Socio socioResponsable, Cargo cargo, List<Actividad> actividadesOrganizadas, List<Actividad> actividades) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.fechaNac = fechaNac.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        this.dni = dni;
+        this.telefono = telefono;
+        this.email = email;
+        if (perfil.equalsIgnoreCase("ADMINISTRADOR")) {
+            this.perfil = TipoPerfil.ADMINISTRADOR;
+        }
+        this.fechaAlta = fechaAlta.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        this.fechaBaja = fechaBaja.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        if (haPagado.equalsIgnoreCase("SI")) {
+            this.haPagado = true;
+        }
+        this.cuota = cuota;
+        this.socioResponsable = socioResponsable;
+        this.cargo = cargo;
+        this.actividadesOrganizadas = actividadesOrganizadas;
+        this.actividades = actividades;
     }
 
     //constructor con los obligatorios
@@ -166,4 +194,9 @@ public class Socio {
         this.cargo = cargo;
     }
 
+    //toString para mostrar en el JList
+    @Override
+    public String toString() {
+        return apellidos + ", " + nombre;
+    }
 }

@@ -14,6 +14,17 @@
     </properties>
 
     <dependencies>
+        <!-- Oracle JDBC -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc</artifactId>
+            <version>12.2.0.1</version>
+            <scope>system</scope>
+            <!-- $(basedir) coge la direción base sea cual sea a la carpeta del proyecto (en este caso ProyectoFinal) -->
+            <systemPath>${basedir}/lib/ojdbc8.jar</systemPath>
+        </dependency>
+
+
         <!-- Good Date Picker -->
         <!-- https://mvnrepository.com/artifact/com.github.lgooddatepicker/LGoodDatePicker -->
         <dependency>
@@ -21,9 +32,6 @@
             <artifactId>LGoodDatePicker</artifactId>
             <version>10.3.1</version>
         </dependency>
-
-
-
 
     </dependencies>
 

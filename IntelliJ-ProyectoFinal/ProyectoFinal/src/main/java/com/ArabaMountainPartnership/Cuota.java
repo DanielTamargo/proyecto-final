@@ -1,17 +1,21 @@
 package com.ArabaMountainPartnership;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Cuota {
 
     private double importe;
-    private int anyoValidez;
+    private LocalDate anyoValidez;
     private List<Socio> socios = new ArrayList<>();
 
-    public Cuota(double importe, int anyoValidez) {
+    //constructor CuotaBD
+    public Cuota(double importe, Date anyoValidez) {
         this.importe = importe;
-        this.anyoValidez = anyoValidez;
+        this.anyoValidez = anyoValidez.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();;
     }
 
     public Cuota() {
@@ -33,11 +37,11 @@ public class Cuota {
         this.importe = importe;
     }
 
-    public int getAnyoValidez() {
+    public LocalDate getAnyoValidez() {
         return anyoValidez;
     }
 
-    public void setAnyoValidez(int anyoValidez) {
+    public void setAnyoValidez(LocalDate anyoValidez) {
         this.anyoValidez = anyoValidez;
     }
 

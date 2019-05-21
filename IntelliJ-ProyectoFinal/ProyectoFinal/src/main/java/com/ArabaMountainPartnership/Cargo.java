@@ -1,7 +1,9 @@
 package com.ArabaMountainPartnership;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Cargo {
@@ -11,6 +13,29 @@ public class Cargo {
     private LocalDate fechaFin;
     private Junta junta;
     private List<Socio> socios = new ArrayList<>();
+
+    //constructor para CargoBD ó similares
+    public Cargo(String tipo, Date fechaInicio, Date fechaFin) {
+        switch (tipo) {
+            case "PRESIDENTE":
+                this.tipo = TipoCargo.PRESIDENTE;
+                break;
+            case "VICEPRESIDENTE":
+                this.tipo = TipoCargo.VICEPRESIDENTE;
+                break;
+            case "SECRETARIO":
+                this.tipo = TipoCargo.SECRETARIO;
+                break;
+            case "TESORERO":
+                this.tipo = TipoCargo.TESORERO;
+                break;
+            default:
+                this.tipo = TipoCargo.VOCAL;
+                break;
+        }
+        this.fechaInicio = fechaInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        this.fechaFin = fechaFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
 
     //constructor dando por hecho que puede que el cargo exista siempre y la junta se vaya reemplazando (usando setJunta)
     public Cargo(TipoCargo tipo, LocalDate fechaInicio, LocalDate fechaFin) {
