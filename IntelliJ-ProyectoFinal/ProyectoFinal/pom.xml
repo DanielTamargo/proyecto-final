@@ -24,7 +24,6 @@
             <systemPath>${basedir}/lib/ojdbc8.jar</systemPath>
         </dependency>
 
-
         <!-- Good Date Picker -->
         <!-- https://mvnrepository.com/artifact/com.github.lgooddatepicker/LGoodDatePicker -->
         <dependency>

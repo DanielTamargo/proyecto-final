@@ -22,8 +22,8 @@ public class Socio {
     private Cuota cuota;
     private Socio socioResponsable; //o
     private Cargo cargo; //o
-    private List<Actividad> actividades = new ArrayList<>();
     private List<Actividad> actividadesOrganizadas = new ArrayList<>();
+    private List<Actividad> actividades = new ArrayList<>();
 
     public Socio() {
     }

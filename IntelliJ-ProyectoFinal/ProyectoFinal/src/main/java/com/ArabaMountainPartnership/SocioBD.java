@@ -1,4 +1,4 @@
-package com.ArabaMountainPartnership;
+/*package com.ArabaMountainPartnership;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,6 +16,10 @@ public class SocioBD {
         Connection conexion = GestorBD.conectar();
 
         try {
+            //primer st sql y rs para recoger los datos del socio en sí
+            Statement st = conexion.createStatement();
+            String sql = "SELECT * FROM SOCIOS";
+            ResultSet rs = st.executeQuery(sql);
 
             //cuota
             Statement stcuota = conexion.createStatement();
@@ -32,10 +36,6 @@ public class SocioBD {
             String sqlcargo;
             ResultSet rscargo;
 
-            Statement st = conexion.createStatement();
-            String sql = "SELECT * FROM SOCIOS";
-            ResultSet rs = st.executeQuery(sql);
-
             while (rs.next()) {
                 //buscamos la cuota y la creamos
                 Double importe = rs.getDouble("importeCuota");
@@ -46,6 +46,7 @@ public class SocioBD {
                         rs.getDate("anyoValidez")));
 
                 //buscamos el socio responsable y lo creamos
+                Socio socioResponsable
                 String codigoSocioResponsable = rs.getString("socioResponsable");
                 sqlsocioresp = "SELECT * FROM SOCIOS WHERE CODIGO=" + codigoSocioResponsable;
                 rssocioresp = stsocioresp.executeQuery(sqlsocioresp);
@@ -57,13 +58,10 @@ public class SocioBD {
                 String codigo = rs.getString("codigo");
                 sqlcargo = "SELECT * FROM CARGOS WHERE CODSOC=" + codigo;
                 rscargo = stcargo.executeQuery(sqlcargo);
-                Cargo cargo;
-                if (rscargo!=null){
-                    cargo = (new Cargo());
-                } else {
-                    cargo = null;
+                Cargo cargo = null;
+                if (rscargo.next()){
+                    cargo = new Cargo();
                 }
-
 
                 //añadimos todos los datos del socio correctamente creados a la lista
                 lista.add(new Socio(
@@ -104,3 +102,5 @@ public class SocioBD {
     }
 
 }
+
+ */

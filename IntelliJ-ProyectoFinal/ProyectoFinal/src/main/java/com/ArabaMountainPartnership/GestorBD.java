@@ -13,26 +13,33 @@ public class GestorBD {
     public static Connection conectar() {
 
         try {
+            /*
+            * eqdam07@//SrvOracle:1521/orcl
+            * Nombre de conexión: ProyectoFinal
+            * Usuario: eqdam07
+            * Contraseña: eqdam07
+            * Nombre del Host: SrvOracle
+            * Puerto: 1521
+            * SID: orcl
+            * */
+
             if (conexion == null || conexion.isClosed()) {
                 //Driver
-                Class.forName("com.mysql.cj.jdbc.Driver");
+                DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+
+                String usuario = "eqdam07";
+                String contrasenya = "eqdam07";
+                String url = "jdbc:oracle:thin:@10.10.10.9:1521:orcl";
+
+                conexion = DriverManager.getConnection(url, usuario, contrasenya);
 
                 //Creamos los Strings para la conexión
-                //ESTOS STRINGS SON LOS DEL EJEMPLO, HAY QUE CAMBIARLOS Y BORRAR ESTE COMENTARIO
-                String servidor = "192.168.33.10";
-                String puerto = "3306";
-                String bd = "videoclub";
-                String login = "root";
-                String password = "root";
-                String opciones = "?verifyServerCertificate=false&useSSL=true&requireSSL=false";
-                String url = "jdbc:mysql://" + servidor + ":" + puerto + "/" + bd + opciones;
                 //JBDC = Java DataBase Connectivity, es una API que permite la ejecución de operaciones sobre las BBDD
 
                 //Se establece la conexión
-                conexion = DriverManager.getConnection(url, login, password);
             }
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
         return conexion;
     }

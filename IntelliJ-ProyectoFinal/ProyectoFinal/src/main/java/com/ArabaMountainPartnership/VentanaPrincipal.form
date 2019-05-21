@@ -80,7 +80,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Daniel"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="d1a4c" class="javax.swing.JLabel" binding="noHaPagadoSegLabel">

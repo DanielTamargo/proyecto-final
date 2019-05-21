@@ -1,6 +1,6 @@
 Clases:
 	- Actividad
-	- ActividadBD
+	- ActividadBD//
 	- Cargo
 	- CargoBD
 	- Cuota
@@ -39,10 +39,19 @@ GUI FORM:
 DUDAS:
 
 0- Cómo se hace la conexión bien, ¿root funciona siempre? ¿necesitamos poner nuestros datos (eqdam07)?
-1- Cómo hacer que al clicar en volver la ventana se cierre sola (sin cerrar la aplicación)
+
+1- Cómo hacer que al clicar en volver la ventana se cierre sola (sin cerrar la aplicación) (con un listener del botón)
+
 2- Cómo cargar Socio al completo, ¿hay que hacer varias SQL? ¿cargando tanto el socio en sí como las referencias que tenga siendo cada referencia una SQL? ¿cómo se carga una relación recursiva?
+
 3- Comprobar que el DATE pasado al LOCALDATE esté bien
-4- Si cargo un valor null no pasa nada, puesto que se guarda como valor null en la lista y ya, verdad?
+
+4- Si cargo un valor null no pasa nada, puesto que se guarda como valor null en la lista y ya, ¿verdad?
+
 5- Por cada clase (Socio, Cuota, Actividad) necesitamos una que gestione los datos que vamos a coger desde la BBDD (SocioBD, CuotaBD, ActividadBD)?
+
 6- Si la select no da resultados, el rs (ResultSet) será null y se puede utilizar en un if? (if rs!=null) 
+
 7- Ficheros, SQLite, JSon, HTTP, ¿tenemos que hacer algo con eso? ¿O son solo apuntes para poder ir aprendiendo otras cosas?
+
+8- Cómo colorear fechas en específico (por ejemplo una lista de fechas con las actividades)

@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
 public class VentanaInicioSesion {
     private JPanel panel;
     private JTextField textUser;
-    private JTextField textPassword;
     private JButton buttonAccept;
     private JButton buttonRegister;
+    private JPasswordField passwordField;
 
     public VentanaInicioSesion() {
         buttonAccept.addActionListener(new ActionListener() {
