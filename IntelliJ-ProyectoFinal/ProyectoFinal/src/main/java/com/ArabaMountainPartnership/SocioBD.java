@@ -100,13 +100,9 @@ public class SocioBD {
                     }
                 }
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public static Socio socio(String codigo) {

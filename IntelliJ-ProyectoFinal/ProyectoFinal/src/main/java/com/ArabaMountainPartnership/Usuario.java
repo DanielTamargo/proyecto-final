@@ -15,6 +15,9 @@ public class Usuario {
         this.socio = socio;
     }
 
+    public Usuario() {
+    }
+
     public String getNombre() {
         return nombre;
     }

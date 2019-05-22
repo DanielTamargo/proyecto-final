@@ -15,7 +15,15 @@ public class VentanaPrincipal {
     private JLabel noHaPagadoPrimLabel;
     private JLabel noHaPagadoSegLabel;
     private JLabel noHaPagadoTercLabel;
+    private Usuario usuario;
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public VentanaPrincipal() {
         verCalendarioActividadesButton.addActionListener(new ActionListener() {
