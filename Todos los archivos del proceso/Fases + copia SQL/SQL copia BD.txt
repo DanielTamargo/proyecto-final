@@ -159,13 +159,23 @@ BEFORE INSERT ON SOCIOS
 FOR EACH ROW
 DECLARE
     v_edad NUMBER(4);
+    v_anyoActual NUMBER(4);
+    v_anyoFechaNac NUMBER(4);
+    v_fechaNac SOCIOS.fechaNac%TYPE;
 BEGIN
-    SELECT(ROUND(MONTHS_BETWEEN(SYSDATE, :new.FECHANAC) / 12)) INTO v_edad FROM DUAL;
+    --SELECT(ROUND(MONTHS_BETWEEN(SYSDATE, :new.FECHANAC) / 12)) INTO v_edad FROM DUAL;
+    --SELECT EXTRACT(YEAR FROM SYSDATE) INTO v_anyoActual;
+    v_anyoActual:=EXTRACT(YEAR FROM SYSDATE);
+    v_anyoFechaNac:=EXTRACT(YEAR FROM :new.FECHANAC);
+    v_edad:=v_anyoActual - v_anyoFechaNac;
     IF v_edad < 18 THEN
         IF :new.SOCIORESPONSABLE IS NULL THEN
             RAISE_APPLICATION_ERROR(-20002,'Los socios menores de edad tienen que tener un socio responsable.');
         ELSE
-            SELECT(ROUND(MONTHS_BETWEEN(SYSDATE, (SELECT FECHANAC FROM SOCIOS WHERE CODIGO=:new.SOCIORESPONSABLE)) / 12)) INTO v_edad FROM DUAL;
+            SELECT FECHANAC INTO v_fechaNac FROM SOCIOS WHERE CODIGO=:new.SOCIORESPONSABLE;
+            --SELECT(ROUND(MONTHS_BETWEEN(SYSDATE, (SELECT FECHANAC FROM SOCIOS WHERE CODIGO=:new.SOCIORESPONSABLE)) / 12)) INTO v_edad FROM DUAL;
+            v_anyoFechaNac:=EXTRACT(YEAR FROM v_fechaNac);
+            v_edad:=v_anyoActual - v_anyoFechaNac;
             IF v_edad < 18 THEN
                 RAISE_APPLICATION_ERROR(-20003,'Los socios menores de edad no pueden ser socios responsables.');
             END IF;
@@ -336,3 +346,13 @@ WITH READ ONLY CONSTRAINT CAL_DML_RO;
 ------ Motivo: la conexión la haremos con este pc y esta base de datos, a través de Java
 ---------- y de la variable "perfil" cuyo valor es "usuario" ó "administrador" modificaremos
 ---------- el programa
+
+
+
+
+
+
+
+
+
+
