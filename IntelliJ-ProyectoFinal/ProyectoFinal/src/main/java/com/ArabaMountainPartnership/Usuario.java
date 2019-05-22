@@ -4,9 +4,12 @@ public class Usuario {
 
     private String nombre;
     private String contrasenya;
-    private Socio socio;
+    private String socio;
+    // decidimos guardar solo el código del socio (como String) para luego mediante un getter
+    // y una búsqueda con sql poder sacar y componer el socio si es necsario
 
-    public Usuario(String nombre, String contrasenya, Socio socio) {
+    // constructor para la primera carga de UsuarioBD (primera carga del programa)
+    public Usuario(String nombre, String contrasenya, String socio) {
         this.nombre = nombre;
         this.contrasenya = contrasenya;
         this.socio = socio;
@@ -28,11 +31,11 @@ public class Usuario {
         this.contrasenya = contrasenya;
     }
 
-    public Socio getSocio() {
+    public String getSocio() {
         return socio;
     }
 
-    public void setSocio(Socio socio) {
+    public void setSocio(String socio) {
         this.socio = socio;
     }
 }

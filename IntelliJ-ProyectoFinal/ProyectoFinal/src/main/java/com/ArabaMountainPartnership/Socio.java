@@ -26,12 +26,42 @@ public class Socio {
     private List<Actividad> actividades = new ArrayList<>();
 
     public Socio() {
+        this.codigo = "error";
+        this.nombre = "fallo al cargar";
+        this.apellidos = "error";
+    }
+
+    //constructor para registrar usuario (siendo mayor)
+    public Socio(String codigo, String nombre, String apellidos, LocalDate fechaNac, String dni, int telefono, String email, LocalDate fechaAlta) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.fechaNac = fechaNac;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.email = email;
+        this.fechaAlta = fechaAlta;
+        this.cuota = CuotaBD.cuotas().get(CuotaBD.cuotas().size() - 1);
+    }
+
+    //constructor para registrar usuario (siendo menor)
+    public Socio(String codigo, String nombre, String apellidos, LocalDate fechaNac, String dni, int telefono, String email, LocalDate fechaAlta, Socio socio) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.fechaNac = fechaNac;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.email = email;
+        this.fechaAlta = fechaAlta;
+        this.cuota = CuotaBD.cuotas().get(CuotaBD.cuotas().size() - 1);
+        this.socioResponsable = socio;
     }
 
     //constructor desde SocioBD
     public Socio(String codigo, String nombre, String apellidos, Date fechaNac, String dni, int telefono,
-                 String email, String perfil, Date fechaAlta, Date fechaBaja, String haPagado, Cuota cuota,
-                 Socio socioResponsable, Cargo cargo, List<Actividad> actividadesOrganizadas, List<Actividad> actividades) {
+                 String email, String perfil, Date fechaAlta, Date fechaBaja, String haPagado/*, Cuota cuota,
+                 Socio socioResponsable, Cargo cargo, List<Actividad> actividadesOrganizadas, List<Actividad> actividades*/) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -46,12 +76,12 @@ public class Socio {
         this.fechaBaja = fechaBaja.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         if (haPagado.equalsIgnoreCase("SI")) {
             this.haPagado = true;
-        }
+        }/*
         this.cuota = cuota;
         this.socioResponsable = socioResponsable;
         this.cargo = cargo;
         this.actividadesOrganizadas = actividadesOrganizadas;
-        this.actividades = actividades;
+        this.actividades = actividades;*/
     }
 
     //constructor con los obligatorios

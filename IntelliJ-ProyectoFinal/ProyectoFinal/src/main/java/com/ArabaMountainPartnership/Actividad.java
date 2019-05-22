@@ -1,6 +1,9 @@
 package com.ArabaMountainPartnership;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Actividad {
@@ -8,11 +11,54 @@ public class Actividad {
     private String codigo;
     private TipoActividad actividad;
     private TipoDificultad dificultad;
+    private LocalDate fecha;
     private String descripcion;
     private double precio;
     private String motivoSuspension;
     private Socio organizador;
     private List<Socio> participantes = new ArrayList<>();
+
+    //constructor para el método recogerActividadesOrganizadas de SocioBD
+    public Actividad(String codigo, String tipo, Date fecha, String descripcion, String dificultad, double precio, String motivoSuspension, Socio socio) {
+        this.codigo = codigo;
+        TipoActividad ta;
+        switch (tipo) {
+            case "SALIDA AL MONTE":
+                ta = TipoActividad.SALIDAALMONTE;
+                break;
+            case "ALBERGUE FIN DE SEMANA":
+                ta = TipoActividad.ALBERGUEFINDESEMANA;
+                break;
+            case "REUNIÓN":
+                ta = TipoActividad.REUNION;
+                break;
+            case "COMIDA":
+                ta = TipoActividad.COMIDA;
+                break;
+            default:
+                ta = TipoActividad.OTROS;
+                break;
+        }
+        this.actividad = ta;
+        this.fecha = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        this.descripcion = descripcion;
+        TipoDificultad td;
+        switch (dificultad) {
+            case "ALTA":
+                td = TipoDificultad.ALTA;
+                break;
+            case "MEDIA":
+                td = TipoDificultad.MEDIA;
+                break;
+            default:
+                td = TipoDificultad.BAJA;
+                break;
+        }
+        this.dificultad = td;
+        this.precio = precio;
+        this.motivoSuspension = motivoSuspension;
+        this.organizador = socio;
+    }
 
     public Actividad(String codigo, TipoActividad actividad, TipoDificultad dificultad, String descripcion, double precio, Socio organizador) {
         this.codigo = codigo;

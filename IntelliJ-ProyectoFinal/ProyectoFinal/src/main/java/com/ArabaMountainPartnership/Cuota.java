@@ -18,6 +18,12 @@ public class Cuota {
         this.anyoValidez = anyoValidez.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();;
     }
 
+    //constructor para las cuotas generadas desde el programa
+    public Cuota(double importe, LocalDate anyoValidez) {
+        this.importe = importe;
+        this.anyoValidez = anyoValidez;
+    }
+
     public Cuota() {
     }
 

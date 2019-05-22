@@ -27,16 +27,15 @@ public class GestorBD {
                 //Driver
                 DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
 
+                //Creamos los Strings para la conexión
                 String usuario = "eqdam07";
                 String contrasenya = "eqdam07";
                 String url = "jdbc:oracle:thin:@10.10.10.9:1521:orcl";
 
+                //Se establece la conexión
                 conexion = DriverManager.getConnection(url, usuario, contrasenya);
 
-                //Creamos los Strings para la conexión
                 //JBDC = Java DataBase Connectivity, es una API que permite la ejecución de operaciones sobre las BBDD
-
-                //Se establece la conexión
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

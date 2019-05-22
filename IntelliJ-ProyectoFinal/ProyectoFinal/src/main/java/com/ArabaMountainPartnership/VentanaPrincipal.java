@@ -41,6 +41,10 @@ public class VentanaPrincipal {
         });
     }
 
+    public JPanel getPanel() {
+        return panel;
+    }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Ventana principal");
         frame.setContentPane(new VentanaPrincipal().panel);
