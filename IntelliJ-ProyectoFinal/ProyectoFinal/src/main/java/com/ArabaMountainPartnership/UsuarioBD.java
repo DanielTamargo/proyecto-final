@@ -30,19 +30,23 @@ public class UsuarioBD {
     public static List<Usuario> usuarios() {
         List<Usuario> lista = new ArrayList<>();
         Connection conexion = GestorBD.conectar();
-
+        int n = 0;
         try {
             Statement st = conexion.createStatement();
             String sql = "SELECT * FROM USUARIOS";
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
+                n++;
                 lista.add(new Usuario(
                         rs.getString("nombre"),
                         rs.getString("contrasenya"),
                         rs.getString("socio")
                 ));
+                System.out.println(n);
             }
+
+            st.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

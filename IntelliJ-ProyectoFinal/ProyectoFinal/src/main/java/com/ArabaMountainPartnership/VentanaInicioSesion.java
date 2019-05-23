@@ -17,22 +17,6 @@ public class VentanaInicioSesion {
     private Usuario usuario;
     private int n = 0;
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
     public VentanaInicioSesion() {
         buttonAccept.addActionListener(new ActionListener() {
             @Override
@@ -42,12 +26,18 @@ public class VentanaInicioSesion {
                     usuarios = new ArrayList<>(UsuarioBD.usuarios());
                 }
                 //creamos un estado que de primeras será false
-                Usuario usuario = new Usuario();
                 boolean usuarioCorrecto = false;
                 //comprobamos que los datos introducidos existen y coinciden (usuario y contraseña)
+                String usuarioIntroducido = textUser.getText();
+                String contrasenyaIntroducida = String.valueOf(passwordField.getPassword());
+                System.out.println(usuarioIntroducido);
+                System.out.println(contrasenyaIntroducida);
                 for (int i = 0; i < usuarios.size(); i++) {
-                    if (usuarios.get(i).getNombre().equalsIgnoreCase(textUser.getText()) &&
-                            usuarios.get(i).getContrasenya().equalsIgnoreCase(String.valueOf(passwordField.getPassword()))) {
+                    System.out.println(usuarios.get(i).getNombre());
+                    System.out.println(usuarios.get(i).getContrasenya());
+                    System.out.println(usuarios.get(i).getSocio());
+                    if (usuarios.get(i).getNombre().equalsIgnoreCase(usuarioIntroducido) &&
+                            usuarios.get(i).getContrasenya().equalsIgnoreCase(contrasenyaIntroducida)) {
                         usuario = usuarios.get(i);
                         usuarioCorrecto = true;
                     }
@@ -60,11 +50,13 @@ public class VentanaInicioSesion {
                     frame.setContentPane(vp.getPanel());
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.pack();
-                    if (SocioBD.socio(usuario.getNombre()).getPerfil() == TipoPerfil.USUARIO) {
+                    String codigo = usuario.getSocio();
+                    Socio socio = SocioBD.socio(codigo);
+                    if (socio.getPerfil() == TipoPerfil.USUARIO) {
                         vp.getPanelEspecialAdministrador().setVisible(false);
                     }
                     vp.getNombreUsuarioLabel().setText(usuario.getNombre());
-                    if (!SocioBD.socio(usuario.getSocio()).isHaPagado()) {
+                    if (socio.isHaPagado()) {
                         vp.getNoHaPagadoPrimLabel().setText("Cuota no pagada.");
                         vp.getNoHaPagadoSegLabel().setText("Pague su cuota antes del");
                         vp.getNoHaPagadoTercLabel().setText("31 de Diciembre");
@@ -74,8 +66,8 @@ public class VentanaInicioSesion {
                 } else {
                     //mostramos error
                     JOptionPane.showMessageDialog(null,
-                            "Error.",
                             "Usuario y/o contraseña incorrectos.",
+                            "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -98,6 +90,22 @@ public class VentanaInicioSesion {
 
     public void setFrame2(JFrame frame) {
         this.frame2 = frame;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public static void main(String[] args) {

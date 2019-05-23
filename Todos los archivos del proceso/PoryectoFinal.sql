@@ -2,18 +2,42 @@ DESCRIBE CUOTAS;
 DESCRIBE USUARIOS;
 DESCRIBE SOCIOS;
 SELECT * FROM SOCIOS;
+SELECT * FROM USUARIOS;
+SELECT * FROM CARGOS;
+SELECT * FROM ACTIVIDADES;
+ALTER TABLE ACTIVIDADES MODIFY PRECIO NUMBER(5,2);
+COMMIT;
 
-INSERT INTO CUOTAS VALUES(15, '31/12/2020');
 INSERT INTO CUOTAS VALUES(15, '31/12/2021');
 
-INSERT INTO SOCIOS VALUES('LF458','Lucía','Fernández Solano','28/05/1994','71122252C',648703266,'luciafernandz@gmail.com','USUARIO',SYSDATE,NULL,15,'31/12/2020',NULL,'NO');
-INSERT INTO SOCIOS VALUES('EB420','Elena','Zamora Blanco','28/05/1994','71122252C',648703266,'elenazamora@gmail.com','USUARIO',SYSDATE,NULL,15,'31/12/2020',NULL,'NO');
+
+
 
 INSERT INTO USUARIOS VALUES('dani','dani','1111a');
 
+--Usuarios normales 
+--1
+INSERT INTO CUOTAS VALUES(15, '31/12/2020');
+INSERT INTO SOCIOS VALUES('LF458','Lucía','Fernández Solano','28/05/1994','71122252C',648703266,'luciafernandz@gmail.com','USUARIO',SYSDATE,NULL,15,'31/12/2020',NULL,'NO');
+INSERT INTO JUNTAS VALUES('01/05/2019', '01/05/2020');
+--NO TIENE CARGO
+INSERT INTO ACTIVIDADES VALUES('ACTN2','COMIDA','07/06/2019','Actividad número 2, prueba','ALTA',12.10,NULL,'LF458');
+
+INSERT INTO USUARIOS VALUES('lucia','lucia','LF458');
+--2
 
 
-
+--Usuarios administradores
+--1
+INSERT INTO CUOTAS VALUES(15, '31/12/2021');
+INSERT INTO SOCIOS VALUES('EB420','Elena','Zamora Blanco','28/05/1994','71122252C',648703266,'elenazamora@gmail.com','USUARIO',SYSDATE,NULL,15,'31/12/2020',NULL,'NO');
+--JUNTA YA EXISTE
+INSERT INTO CARGOS VALUES('PRESIDENTE','01/05/2019','01/05/2020','EB420','01/05/2019');
+INSERT INTO ACTIVIDADES VALUES('ACTN1','OTROS','06/06/2019','Actividad número 1, prueba','BAJA',12.10,NULL,'EB420');
+INSERT INTO PARTICIPACIONES VALUES('EB420', 'ACTN1');
+INSERT INTO FECHASDISPONIBLES VALUES('25/09/2019','EB420');
+INSERT INTO USUARIOS VALUES('elena','elena','EB420');
+--2
 
 
 
@@ -73,7 +97,7 @@ fechaInicio DATE CONSTRAINT JUN_MULTI_PK PRIMARY KEY,
 fechaFin DATE CONSTRAINT JUN_FECFIN_NN NOT NULL
 );
 
-CREATE TABLE CARGO(
+CREATE TABLE CARGOS(
 tipo VARCHAR2(15),
 fechaInicio DATE,
 fechaFin DATE,
@@ -340,9 +364,9 @@ WITH READ ONLY CONSTRAINT CAL_DML_RO;
 --A tener en cuenta:
 -- 1- No hemos creado indexes más allá de los que crea el propio programa con las PK
 ------ (no los considerábamos necesarios)
--- 2- No hemos utilizado el comando para dar permisos a otros usuarios en la BBDD
+-- 2- Para dar privilegios y que los administradores puedan realizar funciones CRUD (Create Read Update Delete) utilizaríamos estos comandos, primero crearíamos el usuario para el administrador y luego le otorgaríamos privilegios. Asímismo se los quitaríamos una vez terminase esa junta y/o perdiese el cargo.
 ------ Crear usuario: CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
 ------ Dar privilegios: GRANT ALL PRIVILEGES ON database.table TO 'user'@'localhost';
------- Motivo: la conexión la haremos con este pc y esta base de datos, a través de Java
----------- y de la variable "perfil" cuyo valor es "usuario" ó "administrador" modificaremos
+------ Denegar privilegios: DENY ALL PRIVILEGES ON database.table TO 'user'@'localhost';
+---------- En java, nos basamos en el valor de la variable "perfil" cuyo valor es "usuario" ó "administrador", utilizando este valor mostraremos unos datos y opciones u otros
 ---------- el programa

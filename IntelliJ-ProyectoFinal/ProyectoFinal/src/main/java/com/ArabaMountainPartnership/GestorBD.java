@@ -28,9 +28,10 @@ public class GestorBD {
                 DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
 
                 //Creamos los Strings para la conexión
+                //machine name: SrvOracle, puerto: 1521, SID: orcl
                 String usuario = "eqdam07";
                 String contrasenya = "eqdam07";
-                String url = "jdbc:oracle:thin:@10.10.10.9:1521:orcl";
+                String url = "jdbc:oracle:thin:@SrvOracle:1521:orcl";
 
                 //Se establece la conexión
                 conexion = DriverManager.getConnection(url, usuario, contrasenya);

@@ -18,29 +18,70 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaInicioSesion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="160">
+              <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#587#588#0" expanded="true" />
-                <element signature="e#618#619#0" expanded="true" />
+                <element signature="e#3625#3626#0" expanded="true" />
+                <element signature="e#3660#3661#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPrincipal.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/UsuarioBD.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1802">
-              <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+            <state relative-caret-position="17">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Socio.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="64" column="29" lean-forward="true" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPrincipal.form">
-          <provider selected="true" editor-type-id="ui-designer" />
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/SocioBD.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#pagarCuota#0;class#SocioBD#0" />
+                <element signature="method#generarCodigo#0;class#SocioBD#0" />
+                <element signature="method#cambiarEmailTelefono#0;class#SocioBD#0" />
+                <element signature="method#recogerActividadesOrganizadas#0;class#SocioBD#0" />
+                <element signature="method#recogerDatosCuotaSocio#0;class#SocioBD#0" />
+                <element signature="method#recogerDatosCargo#0;class#SocioBD#0" />
+                <element signature="method#recogerDatosSocioResponsable#0;class#SocioBD#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Cuota.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="51" lean-forward="true" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -58,6 +99,7 @@
       <find>rs</find>
       <find>stcargo</find>
       <find>execute</find>
+      <find>usuario</find>
     </findStrings>
     <replaceStrings>
       <replace>rscargo</replace>
@@ -81,10 +123,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/ModeloUsuario.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaInicioSesion.form" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/GestorBD.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Cuota.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaRegistrarse.form" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Socio.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Usuario.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaRegistrarse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaCambiarDatosFP.form" />
@@ -97,7 +136,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaListaJunta.form" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaListaJunta.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/CuotaBD.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/UsuarioBD.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/FechaDisponible.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaOrganizarActividad.form" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Actividad.java" />
@@ -107,7 +145,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaActividadesOrganizadas.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaFichaPersonal.form" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/ActividadBD.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/SocioBD.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPago.form" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaCalendario.form" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaFichaPersonal.java" />
@@ -115,9 +152,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/ParticipacionBD.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPago.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaCalendario.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPrincipal.form" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPrincipal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/GestorBD.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/SeccionarDate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Socio.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPrincipal.form" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/UsuarioBD.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Cuota.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaInicioSesion.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/SocioBD.java" />
       </list>
     </option>
   </component>
@@ -129,9 +172,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="291" />
-    <option name="y" value="15" />
-    <option name="width" value="1619" />
+    <option name="x" value="207" />
+    <option name="y" value="24" />
+    <option name="width" value="1661" />
     <option name="height" value="1007" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -140,7 +183,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -181,88 +223,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ArabaMountainPartnership" type="462c0819:PsiDirectoryNode" />
-              <item name="VentanaActividadesOrganizadas" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="ProyectoFinal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoFinal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ArabaMountainPartnership" type="462c0819:PsiDirectoryNode" />
-              <item name="VentanaCalendario" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="ProyectoFinal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoFinal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ArabaMountainPartnership" type="462c0819:PsiDirectoryNode" />
-              <item name="VentanaCambiarDatosFP" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="ProyectoFinal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoFinal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ArabaMountainPartnership" type="462c0819:PsiDirectoryNode" />
-              <item name="VentanaFichaPersonal" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="ProyectoFinal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoFinal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ArabaMountainPartnership" type="462c0819:PsiDirectoryNode" />
               <item name="VentanaInicioSesion" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="ProyectoFinal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoFinal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ArabaMountainPartnership" type="462c0819:PsiDirectoryNode" />
-              <item name="VentanaJuntaOSocios" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="ProyectoFinal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoFinal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ArabaMountainPartnership" type="462c0819:PsiDirectoryNode" />
-              <item name="VentanaListaJunta" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="ProyectoFinal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoFinal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ArabaMountainPartnership" type="462c0819:PsiDirectoryNode" />
-              <item name="VentanaListaSocios" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="ProyectoFinal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoFinal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ArabaMountainPartnership" type="462c0819:PsiDirectoryNode" />
-              <item name="VentanaOrganizarActividad" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="ProyectoFinal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoFinal" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ArabaMountainPartnership" type="462c0819:PsiDirectoryNode" />
-              <item name="VentanaPago" type="e9f4de52:FormNode" />
             </path>
             <path>
               <item name="ProyectoFinal" type="b2602c69:ProjectViewProjectNode" />
@@ -278,12 +239,13 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="330" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ud8-gui-DanielTamargo/02_alumnos/Alumnos" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ud8-gui-DanielTamargo/04_agenda/Agenda" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
@@ -393,9 +355,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="291" y="15" width="1619" height="1007" extended-state="0" />
+    <frame x="207" y="24" width="1661" height="1007" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20525979" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20487195" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -404,7 +366,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3768614" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3935927" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -412,7 +374,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32887402" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3272311" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -452,20 +414,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/TipoDificultad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="46" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/TipoPerfil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/TipoActividad.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -544,73 +492,9 @@
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.desktop/javax/swing/AbstractButton.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/GestorBD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/GestorUsuarios.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Cuota.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="61" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaInicioSesion.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaRegistrarse.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaRegistrarse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#996#997#0" expanded="true" />
-            <element signature="e#1036#1037#0" expanded="true" />
-            <element signature="e#937#938#0" expanded="true" />
-            <element signature="e#965#966#0" expanded="true" />
-            <element signature="e#1009#1010#0" expanded="true" />
-            <element signature="e#1045#1046#0" expanded="true" />
-            <element signature="e#9499#9500#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Usuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaCambiarDatosFP.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-      <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaCambiarDatosFP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#631#632#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaCambiarDatosFP.form" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaCambiarDatosFP.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaJuntaOSocios.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
@@ -632,23 +516,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaListaJunta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="47" column="35" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#773#774#0" expanded="true" />
-            <element signature="e#821#822#0" expanded="true" />
-            <element signature="e#2541#2542#0" expanded="true" />
-            <element signature="e#2621#2622#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaListaJunta.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaListaJunta.form" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Cargo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -671,43 +539,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/UsuarioBD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="48" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#guardar#0;class#UsuarioBD#0" />
-            <element signature="method#usuarios#0;class#UsuarioBD#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Socio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-766">
-          <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/FechaDisponible.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#313#314#0" expanded="true" />
-            <element signature="e#341#342#0" expanded="true" />
-            <element signature="e#386#387#0" expanded="true" />
-            <element signature="e#420#421#0" expanded="true" />
-            <element signature="e#451#452#0" expanded="true" />
-            <element signature="e#479#480#0" expanded="true" />
-            <element signature="e#520#521#0" expanded="true" />
-            <element signature="e#554#555#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/FechaDisponible.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Actividad.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -722,23 +554,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaOrganizarActividad.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaOrganizarActividad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="60" column="37" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3692#3693#0" expanded="true" />
-            <element signature="e#4442#4443#0" expanded="true" />
-            <element signature="e#4522#4523#0" expanded="true" />
-            <element signature="e#4607#4608#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaOrganizarActividad.form" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaOrganizarActividad.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaListaSocios.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -749,47 +566,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaActividadesOrganizadas.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaActividadesOrganizadas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="101" column="24" selection-start-line="101" selection-start-column="24" selection-end-line="101" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2670#2671#0" expanded="true" />
-            <element signature="e#2718#2719#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPago.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaActividadesOrganizadas.form" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaActividadesOrganizadas.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPago.form" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaFichaPersonal.form">
       <provider selected="true" editor-type-id="ui-designer" />
       <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/SocioBD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#generarCodigo#0;class#SocioBD#0" />
-            <element signature="method#cambiarEmailTelefono#0;class#SocioBD#0" />
-            <element signature="method#guardar#0;class#SocioBD#0" />
-            <element signature="e#1683#5085#0" />
-            <element signature="method#socio#0;class#SocioBD#0" />
-            <element signature="method#recogerActividadesOrganizadas#0;class#SocioBD#0" />
-            <element signature="method#recogerDatosCuotaSocio#0;class#SocioBD#0" />
-            <element signature="method#recogerDatosCargo#0;class#SocioBD#0" />
-            <element signature="method#recogerDatosSocioResponsable#0;class#SocioBD#0" />
-            <element signature="method#socios#0;class#SocioBD#0" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaFichaPersonal.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -802,75 +584,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Participacion.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Participacion.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/ActividadBD.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/CargoBD.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/FechaDisponibleBD.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/ParticipacionBD.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPago.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPrincipal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-          <folding>
-            <element signature="e#320#321#0" expanded="true" />
-            <element signature="e#361#362#0" expanded="true" />
-            <element signature="e#395#396#0" expanded="true" />
-            <element signature="e#434#435#0" expanded="true" />
-            <element signature="e#466#467#0" expanded="true" />
-            <element signature="e#519#520#0" expanded="true" />
-            <element signature="e#561#562#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/ActividadBD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="61" column="31" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="61" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#generarCodigo#0;class#ActividadBD#0" />
-            <element signature="method#actividadesOrganizadasPorUnSocio#0;class#ActividadBD#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/CargoBD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#cargosBasic#0;class#CargoBD#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/FechaDisponibleBD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-160">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#fechasDisponibles#0;class#FechaDisponibleBD#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/ParticipacionBD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPago.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="55" column="103" selection-start-line="55" selection-start-column="103" selection-end-line="55" selection-end-column="103" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3418#3419#0" expanded="true" />
-            <element signature="e#3460#3461#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="935">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
         </state>
       </provider>
     </entry>
@@ -879,43 +602,129 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaCalendario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="1921">
           <caret line="115" column="13" lean-forward="true" selection-start-line="115" selection-start-column="13" selection-end-line="115" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8320#8321#0" expanded="true" />
-            <element signature="e#8358#8359#0" expanded="true" />
-            <element signature="e#8401#8402#0" expanded="true" />
-            <element signature="e#8439#8440#0" expanded="true" />
-            <element signature="e#8471#8472#0" expanded="true" />
-            <element signature="e#8499#8500#0" expanded="true" />
-            <element signature="e#8543#8544#0" expanded="true" />
-            <element signature="e#8579#8580#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaInicioSesion.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaRegistrarse.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaListaJunta.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="1054">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Usuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaInicioSesion.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaRegistrarse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#587#588#0" expanded="true" />
-            <element signature="e#618#619#0" expanded="true" />
+            <element signature="e#996#997#0" expanded="true" />
+            <element signature="e#1036#1037#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPrincipal.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/SeccionarDate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1802">
-          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+        <state relative-caret-position="51">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaPrincipal.form">
       <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/GestorBD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="27" column="39" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Cuota.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="51" lean-forward="true" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/ojdbc8.jar!/oracle/jdbc/driver/T4CTTIoer11.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-918" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/VentanaInicioSesion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3625#3626#0" expanded="true" />
+            <element signature="e#3660#3661#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/Socio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="64" column="29" lean-forward="true" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/UsuarioBD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ArabaMountainPartnership/SocioBD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#pagarCuota#0;class#SocioBD#0" />
+            <element signature="method#generarCodigo#0;class#SocioBD#0" />
+            <element signature="method#cambiarEmailTelefono#0;class#SocioBD#0" />
+            <element signature="method#recogerActividadesOrganizadas#0;class#SocioBD#0" />
+            <element signature="method#recogerDatosCuotaSocio#0;class#SocioBD#0" />
+            <element signature="method#recogerDatosCargo#0;class#SocioBD#0" />
+            <element signature="method#recogerDatosSocioResponsable#0;class#SocioBD#0" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

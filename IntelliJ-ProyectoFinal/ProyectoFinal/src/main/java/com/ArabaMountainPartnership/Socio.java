@@ -59,24 +59,37 @@ public class Socio {
     }
 
     //constructor desde SocioBD
-    public Socio(String codigo, String nombre, String apellidos, Date fechaNac, String dni, int telefono,
+    public Socio(String codigo, String nombre, String apellidos, Date fechaNac/*String fechaNac*/, String dni, int telefono,
                  String email, String perfil, Date fechaAlta, Date fechaBaja, String haPagado/*, Cuota cuota,
                  Socio socioResponsable, Cargo cargo, List<Actividad> actividadesOrganizadas, List<Actividad> actividades*/) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.fechaNac = fechaNac.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        String fechaNacStr = String.valueOf(fechaNac);
+        this.fechaNac = LocalDate.parse(fechaNacStr);
         this.dni = dni;
         this.telefono = telefono;
         this.email = email;
         if (perfil.equalsIgnoreCase("ADMINISTRADOR")) {
             this.perfil = TipoPerfil.ADMINISTRADOR;
         }
-        this.fechaAlta = fechaAlta.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        this.fechaBaja = fechaBaja.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        String fechaAltaStr = String.valueOf(fechaAlta);
+        this.fechaAlta = LocalDate.parse(fechaAltaStr);
+        String fechaBajaStr = String.valueOf(fechaBaja);
+        if (fechaBaja == null) {
+            this.fechaBaja = null;
+        } else {
+            this.fechaBaja = LocalDate.parse(fechaBajaStr);
+        }
         if (haPagado.equalsIgnoreCase("SI")) {
             this.haPagado = true;
-        }/*
+        }
+        //System.out.println(this.haPagado);
+        //System.out.println(this.nombre);
+        //System.out.println(this.codigo);
+        //System.out.println(this.telefono);
+
+        /*
         this.cuota = cuota;
         this.socioResponsable = socioResponsable;
         this.cargo = cargo;

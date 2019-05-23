@@ -155,10 +155,9 @@ public class SocioBD {
         Socio socio = new Socio();
 
         Connection conexion = GestorBD.conectar();
-
         try {
             Statement st = conexion.createStatement();
-            String sql = "SELECT * FROM SOCIOS WHERE CODIGO=" + codigo;
+            String sql = "SELECT * FROM SOCIOS WHERE CODIGO = " + codigo;
             ResultSet rs = st.executeQuery(sql);
 
             if (rs.next()) {
@@ -167,6 +166,7 @@ public class SocioBD {
                         rs.getString("nombre"),
                         rs.getString("apellidos"),
                         rs.getDate("fechaNac"),
+                        //rs.getString("fechaNac"),
                         rs.getString("dni"),
                         rs.getInt("telefono"),
                         rs.getString("email"),
@@ -176,6 +176,8 @@ public class SocioBD {
                         rs.getString("haPagado")
                 );
             }
+
+            st.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -298,6 +300,7 @@ public class SocioBD {
                                 rssocioresp.getString("nombre"),
                                 rssocioresp.getString("apellidos"),
                                 rssocioresp.getDate("fechaNac"),
+                                //rssocioresp.getString("fechaNac"),
                                 rssocioresp.getString("dni"),
                                 rssocioresp.getInt("telefono"),
                                 rssocioresp.getString("email"),
@@ -335,6 +338,7 @@ public class SocioBD {
                         rs.getString("nombre"),
                         rs.getString("apellidos"),
                         rs.getDate("fechaNac"),
+                        //rs.getString("fechaNac"),
                         rs.getString("dni"),
                         rs.getInt("telefono"),
                         rs.getString("email"),
@@ -343,6 +347,8 @@ public class SocioBD {
                         rs.getDate("fechaBaja"),
                         rs.getString("haPagado")));
             }
+
+            st.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
