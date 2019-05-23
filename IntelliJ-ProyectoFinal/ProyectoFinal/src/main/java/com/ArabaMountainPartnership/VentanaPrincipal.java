@@ -26,25 +26,27 @@ public class VentanaPrincipal {
     }
 
     public VentanaPrincipal() {
-        verCalendarioActividadesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
+        //Ver Ficha Personal
         verFichaPersonalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //creamos un objeto de la clase VentanaFichaPersonal y utilizamos el getPanel para acceder a los datos del panel
-                //y cargarlos y luego utilizamos un setFrame para pasar la referencia del frame y así poder usar un dispose
-                //en el botón Volver que tendrá la ventana "Ficha Personal"
                 VentanaFichaPersonal vfp = new VentanaFichaPersonal();
                 JFrame frame = new JFrame("Ficha personal");
                 frame.setContentPane(vfp.getPanel());
+                vfp.setUsuario(usuario);
                 vfp.setFrame(frame);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
+            }
+        });
+
+
+        //Ver Calendario de Actividades
+        verCalendarioActividadesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }

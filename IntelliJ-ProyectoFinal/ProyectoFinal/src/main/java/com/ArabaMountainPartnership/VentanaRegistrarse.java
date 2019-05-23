@@ -25,7 +25,12 @@ public class VentanaRegistrarse {
     private DatePicker datePickerFechaNac;
     private JTextField textField1telefono;
     private List<Socio> socios = SocioBD.socios();
+    private List<Usuario> usuarios;
     private JFrame frame5;
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
 
     public JPanel getPanel() {
         return panel;
@@ -58,94 +63,110 @@ public class VentanaRegistrarse {
                     String contrasenya = String.valueOf(passwordField1Contrasenya.getPassword());
                     int telefono = Integer.parseInt(textField1telefono.getText());
 
-                    Socio socioResponsable = SocioBD.socios().get(0); //le cargamos un valor "padre" por si acaso para evitar fallos
-                    LocalDate now = LocalDate.now();
-                    //cuidado con que las fechas no estén al revés en el Period.between
-                    int anyosEntreFechas = Period.between(datePickerFechaNac.getDate(), now).getYears();
-                    if (anyosEntreFechas < 18) {
-                        if (anyosEntreFechas < 5) {
-                            //mostramos error
-                            JOptionPane.showMessageDialog(null,
-                                    "Error.",
-                                    "La edad no puede ser inferior a 4 años.",
-                                    JOptionPane.ERROR_MESSAGE);
-                        } else {
-                            if (codigoRespons.equalsIgnoreCase("")) {
+                    //comprobamos que el usuario no esté repetido
+                    boolean usuarioUnico = true;
+
+                    for (int i = 0; i < usuarios.size(); i++) {
+                        if (usuarios.get(i).getNombre().equalsIgnoreCase(usuario)) {
+                            usuarioUnico = false;
+                        }
+                    }
+
+                    if (usuarioUnico) {
+                        Socio socioResponsable = SocioBD.socios().get(0); //le cargamos un valor "padre" por si acaso para evitar fallos
+                        LocalDate now = LocalDate.now();
+                        //cuidado con que las fechas no estén al revés en el Period.between
+                        int anyosEntreFechas = Period.between(datePickerFechaNac.getDate(), now).getYears();
+                        if (anyosEntreFechas < 18) {
+                            if (anyosEntreFechas < 5) {
                                 //mostramos error
                                 JOptionPane.showMessageDialog(null,
                                         "Error.",
-                                        "Si eres menor, tienes que tener un socio responsable.",
+                                        "La edad no puede ser inferior a 4 años.",
                                         JOptionPane.ERROR_MESSAGE);
                             } else {
-                                boolean estado = false;
-                                LocalDate fechaNacSoc;
-                                for (int i = 0; i < socios.size(); i++) {
-                                    if (socios.get(i).getCodigo().equalsIgnoreCase(codigoRespons)) {
-                                        fechaNacSoc = socios.get(i).getFechaNac();
-                                        anyosEntreFechas = Period.between(fechaNacSoc, now).getYears();
-                                        if (anyosEntreFechas > 17) {
-                                            socioResponsable = socios.get(i);
-                                            i = socios.size();
-                                            estado = true;
-                                        }
-                                    }
-                                }
-                                if (estado) {
-                                    //añadimos el nuevo socio a la base
-                                    Socio nuevoSocio = new Socio(
-                                            SocioBD.generarCodigo(nombre, apellidos),
-                                            nombre,
-                                            apellidos,
-                                            datePickerFechaNac.getDate(),
-                                            dni,
-                                            telefono,
-                                            email,
-                                            now,
-                                            socioResponsable);
-                                    SocioBD.guardar(nuevoSocio);
-                                    //añadimos el usuario y la contraseña también
-                                    Usuario nuevoUsuario = new Usuario(usuario, contrasenya, nuevoSocio.getCodigo());
-                                    UsuarioBD.guardar(nuevoUsuario);
-                                    JOptionPane.showMessageDialog(null,
-                                            "Proceso realizado.",
-                                            "Se ha registrado el socio correctamente, apunta tu nombre de usuario y contraseña",
-                                            JOptionPane.ERROR_MESSAGE);
-                                } else {
+                                if (codigoRespons.equalsIgnoreCase("")) {
+                                    //mostramos error
                                     JOptionPane.showMessageDialog(null,
                                             "Error.",
-                                            "No se ha encontrado el socio con el código " + codigoRespons + ".",
+                                            "Si eres menor, tienes que tener un socio responsable.",
                                             JOptionPane.ERROR_MESSAGE);
-                                    frame5.dispose();
+                                } else {
+                                    boolean estado = false;
+                                    LocalDate fechaNacSoc;
+                                    for (int i = 0; i < socios.size(); i++) {
+                                        if (socios.get(i).getCodigo().equalsIgnoreCase(codigoRespons)) {
+                                            fechaNacSoc = socios.get(i).getFechaNac();
+                                            anyosEntreFechas = Period.between(fechaNacSoc, now).getYears();
+                                            if (anyosEntreFechas > 17) {
+                                                socioResponsable = socios.get(i);
+                                                i = socios.size();
+                                                estado = true;
+                                            }
+                                        }
+                                    }
+                                    if (estado) {
+                                        //añadimos el nuevo socio a la base
+                                        Socio nuevoSocio = new Socio(
+                                                SocioBD.generarCodigo(nombre, apellidos),
+                                                nombre,
+                                                apellidos,
+                                                datePickerFechaNac.getDate(),
+                                                dni,
+                                                telefono,
+                                                email,
+                                                now,
+                                                socioResponsable);
+                                        SocioBD.guardar(nuevoSocio);
+                                        //añadimos el usuario y la contraseña también
+                                        Usuario nuevoUsuario = new Usuario(usuario, contrasenya, nuevoSocio.getCodigo());
+                                        UsuarioBD.guardar(nuevoUsuario);
+                                        JOptionPane.showMessageDialog(null,
+                                                "Proceso realizado.",
+                                                "Se ha registrado el socio correctamente, apunta tu nombre de usuario y contraseña",
+                                                JOptionPane.ERROR_MESSAGE);
+                                    } else {
+                                        JOptionPane.showMessageDialog(null,
+                                                "Error.",
+                                                "No se ha encontrado el socio con el código " + codigoRespons + ".",
+                                                JOptionPane.ERROR_MESSAGE);
+                                        frame5.dispose();
+                                    }
                                 }
+                            }
+                        } else {
+                            if (!codigoRespons.equalsIgnoreCase("")) {
+                                JOptionPane.showMessageDialog(null,
+                                        "Error.",
+                                        "Eres mayor de edad, elimina el código del socio responsable.",
+                                        JOptionPane.ERROR_MESSAGE);
+                            } else {
+                                //añadimos el nuevo socio a la base
+                                Socio nuevoSocio = new Socio(
+                                        SocioBD.generarCodigo(nombre, apellidos),
+                                        nombre,
+                                        apellidos,
+                                        datePickerFechaNac.getDate(),
+                                        dni,
+                                        telefono,
+                                        email,
+                                        now);
+                                SocioBD.guardar(nuevoSocio);
+                                //añadimos el usuario y la contraseña también
+                                Usuario nuevoUsuario = new Usuario(usuario, contrasenya, nuevoSocio.getCodigo());
+                                UsuarioBD.guardar(nuevoUsuario);
+                                JOptionPane.showMessageDialog(null,
+                                        "Proceso realizado.",
+                                        "Se ha registrado el socio correctamente, recuerde su usuario y contraseña",
+                                        JOptionPane.INFORMATION_MESSAGE);
+                                frame5.dispose();
                             }
                         }
                     } else {
-                        if (!codigoRespons.equalsIgnoreCase("")) {
-                            JOptionPane.showMessageDialog(null,
-                                    "Error.",
-                                    "Eres mayor de edad, elimina el código del socio responsable.",
-                                    JOptionPane.ERROR_MESSAGE);
-                        } else {
-                            //añadimos el nuevo socio a la base
-                            Socio nuevoSocio = new Socio(
-                                    SocioBD.generarCodigo(nombre, apellidos),
-                                    nombre,
-                                    apellidos,
-                                    datePickerFechaNac.getDate(),
-                                    dni,
-                                    telefono,
-                                    email,
-                                    now);
-                            SocioBD.guardar(nuevoSocio);
-                            //añadimos el usuario y la contraseña también
-                            Usuario nuevoUsuario = new Usuario(usuario, contrasenya, nuevoSocio.getCodigo());
-                            UsuarioBD.guardar(nuevoUsuario);
-                            JOptionPane.showMessageDialog(null,
-                                    "Proceso realizado.",
-                                    "Se ha registrado el socio correctamente, apunta tu nombre de usuario y contraseña",
-                                    JOptionPane.ERROR_MESSAGE);
-                            frame5.dispose();
-                        }
+                        JOptionPane.showMessageDialog(null,
+                                "Error.",
+                                "El usuario debe ser único.",
+                                JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null,

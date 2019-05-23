@@ -15,6 +15,15 @@ public class VentanaInicioSesion {
     private List<Usuario> usuarios = new ArrayList<>(UsuarioBD.usuarios());
     private JFrame frame2;
     private Usuario usuario;
+    private int n = 0;
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -28,18 +37,22 @@ public class VentanaInicioSesion {
         buttonAccept.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //cargamos de nuevo la lista si hemos registrado a alguien
+                if (n > 0) {
+                    usuarios = new ArrayList<>(UsuarioBD.usuarios());
+                }
                 //creamos un estado que de primeras será false
                 Usuario usuario = new Usuario();
-                boolean estado = false;
+                boolean usuarioCorrecto = false;
                 //comprobamos que los datos introducidos existen y coinciden (usuario y contraseña)
                 for (int i = 0; i < usuarios.size(); i++) {
                     if (usuarios.get(i).getNombre().equalsIgnoreCase(textUser.getText()) &&
                             usuarios.get(i).getContrasenya().equalsIgnoreCase(String.valueOf(passwordField.getPassword()))) {
                         usuario = usuarios.get(i);
-                        estado = true;
+                        usuarioCorrecto = true;
                     }
                 }
-                if (estado) {
+                if (usuarioCorrecto) {
                     //pasamos
                     VentanaPrincipal vp = new VentanaPrincipal();
                     vp.setUsuario(usuario);
@@ -49,7 +62,6 @@ public class VentanaInicioSesion {
                     frame.pack();
                     frame.setVisible(true);
                     frame2.dispose();
-
                 } else {
                     //mostramos error
                     JOptionPane.showMessageDialog(null,
@@ -67,8 +79,10 @@ public class VentanaInicioSesion {
                 frame.setContentPane(vr.getPanel());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 vr.setFrame5(frame);
+                vr.setUsuarios(usuarios);
                 frame.pack();
                 frame.setVisible(true);
+                n++;
             }
         });
     }

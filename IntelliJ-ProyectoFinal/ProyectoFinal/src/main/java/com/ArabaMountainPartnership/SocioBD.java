@@ -32,6 +32,28 @@ public class SocioBD {
         return codigo;
     }
 
+    public static void cambiarEmailTelefono(String codigo, String email, int telefono) {
+        Connection conexion = GestorBD.conectar();
+
+        try {
+            String sql;
+            PreparedStatement st;
+
+            sql = "UPDATE SOCIOS SET EMAIL = ?, TELEFONO = ? WHERE CODIGO = ?";
+            st = conexion.prepareStatement(sql);
+
+            st.setString(1, email);
+            st.setInt(2, telefono);
+            st.setString(3, codigo);
+
+            st.executeUpdate();
+            st.close();
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+    }
+
     public static void guardar(Socio socio) {
         Connection conexion = GestorBD.conectar();
 
