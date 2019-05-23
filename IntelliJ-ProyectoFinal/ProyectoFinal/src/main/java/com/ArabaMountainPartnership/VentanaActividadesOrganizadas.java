@@ -19,9 +19,11 @@ public class VentanaActividadesOrganizadas {
     private JButton suspenderActividadButton;
     private JButton volverButton;
     private JTextField textField1MotivoSusp;
+    private JButton verComoAdministradorButton;
     private JFrame frame2;
     private Usuario usuario;
     private List<Actividad> actividadesOrganizadas;
+    private int n = 1;
 
     public VentanaActividadesOrganizadas() {
         list1.addListSelectionListener(e -> {
@@ -87,8 +89,27 @@ public class VentanaActividadesOrganizadas {
                 }
             }
         });
+        verComoAdministradorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Socio socio = SocioBD.socio(usuario.getSocio());
+                if (socio.getPerfil() == TipoPerfil.ADMINISTRADOR) {
+                    if (n % 2 != 0) {
+                        actividadesOrganizadas = ActividadBD.actividadesOrdeandasFechaDesc();
+                    } else {
+                        actividadesOrganizadas = ActividadBD.actividadesOrganizadasPorUnSocio(usuario.getSocio());
+                    }
+                    n++;
+                    actualizarListaActividades();
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "Error.",
+                            "No puedes acceder a esta lista si no eres administrador.",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
     }
-
 
     public void actualizarListaActividades() {
         DefaultListModel<Actividad> modelo = new DefaultListModel<>();
@@ -96,6 +117,10 @@ public class VentanaActividadesOrganizadas {
             modelo.addElement(a);
         }
         list1.setModel(modelo);
+    }
+
+    public JButton getVerComoAdministradorButton() {
+        return verComoAdministradorButton;
     }
 
     public JPanel getPanel() {

@@ -340,11 +340,11 @@ WITH READ ONLY CONSTRAINT CAL_DML_RO;
 --A tener en cuenta:
 -- 1- No hemos creado indexes más allá de los que crea el propio programa con las PK
 ------ (no los considerábamos necesarios)
--- 2- No hemos utilizado el comando para dar permisos a otros usuarios en la BBDD
+-- 2- Para dar privilegios y que los administradores puedan realizar funciones CRUD (Create Read Update Delete) utilizaríamos estos comandos, primero crearíamos el usuario para el administrador y luego le otorgaríamos privilegios. Asímismo se los quitaríamos una vez terminase esa junta y/o perdiese el cargo.
 ------ Crear usuario: CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
 ------ Dar privilegios: GRANT ALL PRIVILEGES ON database.table TO 'user'@'localhost';
------- Motivo: la conexión la haremos con este pc y esta base de datos, a través de Java
----------- y de la variable "perfil" cuyo valor es "usuario" ó "administrador" modificaremos
+------ Denegar privilegios: DENY ALL PRIVILEGES ON database.table TO 'user'@'localhost';
+---------- En java, nos basamos en el valor de la variable "perfil" cuyo valor es "usuario" ó "administrador", utilizando este valor mostraremos unos datos y opciones u otros
 ---------- el programa
 
 

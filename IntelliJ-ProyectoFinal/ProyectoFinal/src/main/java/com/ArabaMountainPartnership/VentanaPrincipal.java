@@ -15,6 +15,9 @@ public class VentanaPrincipal {
     private JLabel noHaPagadoPrimLabel;
     private JLabel noHaPagadoSegLabel;
     private JLabel noHaPagadoTercLabel;
+    private JButton crearJuntaButton;
+    private JButton crearFechaDisponibleButton;
+    private JPanel panelEspecialAdministrador;
     private Usuario usuario;
 
     public VentanaPrincipal() {
@@ -25,6 +28,9 @@ public class VentanaPrincipal {
                 VentanaFichaPersonal vfp = new VentanaFichaPersonal();
                 JFrame frame = new JFrame("Ficha personal");
                 frame.setContentPane(vfp.getPanel());
+                if (SocioBD.socio(usuario.getSocio()).isHaPagado()) {
+                    vfp.getPagarCuotaButton().setVisible(false);
+                }
                 vfp.setUsuario(usuario);
                 vfp.setFrame(frame);
                 vfp.actualizarDatos(usuario.getSocio());
@@ -57,6 +63,7 @@ public class VentanaPrincipal {
                 JFrame frame = new JFrame("Calendario");
                 frame.setContentPane(vc.getPanel());
                 vc.setFrame2(frame);
+                vc.getApuntarseButton().setVisible(false);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -86,6 +93,9 @@ public class VentanaPrincipal {
                 VentanaActividadesOrganizadas vao = new VentanaActividadesOrganizadas();
                 JFrame frame = new JFrame("Actividades Organizadas");
                 frame.setContentPane(vao.getPanel());
+                if (SocioBD.socio(usuario.getSocio()).getPerfil() != TipoPerfil.ADMINISTRADOR) {
+                    vao.getVerComoAdministradorButton().setVisible(false);
+                }
                 vao.setFrame2(frame);
                 vao.setUsuario(usuario);
                 vao.setActividadesOrganizadas(ActividadBD.actividadesOrganizadasPorUnSocio(usuario.getSocio()));
@@ -119,6 +129,10 @@ public class VentanaPrincipal {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public JPanel getPanelEspecialAdministrador() {
+        return panelEspecialAdministrador;
     }
 
     public JPanel getPanel() {

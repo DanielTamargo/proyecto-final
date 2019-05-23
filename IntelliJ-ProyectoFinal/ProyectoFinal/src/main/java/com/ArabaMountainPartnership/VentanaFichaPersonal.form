@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="417"/>
+      <xy x="20" y="20" width="500" height="435"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -178,25 +178,59 @@
           </component>
         </children>
       </grid>
-      <grid id="dfc2e" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
+      <grid id="33c07" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
         <children>
-          <component id="325a2" class="javax.swing.JButton" binding="volverButton" default-binding="true">
-            <constraints/>
-            <properties>
-              <text value="Volver"/>
-            </properties>
-          </component>
-          <component id="52a61" class="javax.swing.JButton" binding="cambiarDatosButton" default-binding="true">
-            <constraints/>
-            <properties>
-              <text value="Cambiar datos"/>
-            </properties>
-          </component>
+          <grid id="9a1f7" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="98e46" class="javax.swing.JButton" binding="pagarCuotaButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Pagar cuota"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="dfc2e" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="325a2" class="javax.swing.JButton" binding="volverButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Volver"/>
+                </properties>
+              </component>
+              <component id="52a61" class="javax.swing.JButton" binding="cambiarDatosButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Cambiar datos"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="9a115" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="10" bottom="0" right="10"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
         </children>
       </grid>
     </children>

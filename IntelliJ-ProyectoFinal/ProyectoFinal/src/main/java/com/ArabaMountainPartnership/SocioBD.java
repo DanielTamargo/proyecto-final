@@ -11,6 +11,27 @@ import java.util.Random;
 
 public class SocioBD {
 
+    public static void pagarCuota(String codigo) {
+
+        Connection conexion = GestorBD.conectar();
+        //String haPagado = "SI";
+        try {
+            String sql;
+            PreparedStatement st;
+            sql = "UPDATE SOCIOS SET HAPAGADO = 'SI' WHERE CODIGO = ?";
+            st = conexion.prepareStatement(sql);
+
+            st.setString(1, codigo);
+
+            st.executeUpdate();
+            st.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        GestorBD.desconectar();
+    }
+
     public static String generarCodigo(String nombre, String apellidos) {
         String codigo;
         List<Socio> socios = SocioBD.socios();

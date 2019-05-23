@@ -106,8 +106,6 @@ public class ActividadBD {
             e.printStackTrace();
         }
         GestorBD.desconectar();
-
-
     }
 
     public static List<Actividad> actividadesOrganizadasPorUnSocio(String codigoSocio) {
@@ -120,6 +118,41 @@ public class ActividadBD {
             //primer st sql y rs para recoger los datos del socio en sí
             Statement st = conexion.createStatement();
             String sql = "SELECT * FROM ACTIVIDADES WHERE CODIGO = " + codigoSocio + " ORDER BY FECHA DESC";
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                Socio socio = SocioBD.socio(rs.getString("organizador"));
+                //añadimos todos los datos del socio correctamente creados a la lista
+                lista.add(new Actividad(
+                        rs.getString("codigo"),
+                        rs.getString("tipo"),
+                        rs.getDate("fecha"),
+                        rs.getString("descripcion"),
+                        rs.getString("dificultad"),
+                        rs.getDouble("precio"),
+                        rs.getString("motivoSuspension"),
+                        socio
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        GestorBD.desconectar();
+
+        return lista;
+    }
+
+    public static List<Actividad> actividadesOrdeandasFechaDesc() {
+
+        List<Actividad> lista = new ArrayList<>();
+
+        Connection conexion = GestorBD.conectar();
+
+        try {
+            //primer st sql y rs para recoger los datos del socio en sí
+            Statement st = conexion.createStatement();
+            String sql = "SELECT * FROM ACTIVIDADES ORDER BY FECHA DESC";
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {

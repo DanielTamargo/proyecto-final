@@ -60,6 +60,9 @@ public class VentanaInicioSesion {
                     frame.setContentPane(vp.getPanel());
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.pack();
+                    if (SocioBD.socio(usuario.getNombre()).getPerfil() == TipoPerfil.USUARIO) {
+                        vp.getPanelEspecialAdministrador().setVisible(false);
+                    }
                     vp.getNombreUsuarioLabel().setText(usuario.getNombre());
                     if (!SocioBD.socio(usuario.getSocio()).isHaPagado()) {
                         vp.getNoHaPagadoPrimLabel().setText("Cuota no pagada.");

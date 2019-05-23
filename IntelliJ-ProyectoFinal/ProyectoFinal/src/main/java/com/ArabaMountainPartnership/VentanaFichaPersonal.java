@@ -4,6 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ArrayList;
@@ -23,6 +29,7 @@ public class VentanaFichaPersonal {
     private JLabel dniLabel;
     private JLabel perfilLabel;
     private JLabel cuotaPagadaLabel;
+    private JButton pagarCuotaButton;
     private JFrame frame;
     private Usuario usuario;
 
@@ -78,6 +85,50 @@ public class VentanaFichaPersonal {
                 frame.setVisible(true);
             }
         });
+        pagarCuotaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!SocioBD.socio(usuario.getSocio()).isHaPagado()) {
+                    VentanaPago vp = new VentanaPago();
+                    JFrame frame = new JFrame("Ventana Pago Cuota");
+                    vp.setFrame2(frame);
+                    vp.setUsuario(usuario);
+                    LocalDate now = LocalDate.now();
+                    LocalDate fechaSocio = SocioBD.socio(usuario.getSocio()).getFechaNac();
+                    int dif = Period.between(fechaSocio, now).getYears();
+                    double precio = 15;
+                    if (dif < 18) {
+                        vp.getMensajePrecioCuota().setText("Precio total (cuota infantil): ");
+                        try {
+                            String sql = "{ call gest_depart.insert_depart(?,?) }";
+                            Connection conn = GestorBD.conectar();
+                            CallableStatement cs = conn.prepareCall(sql);
+                            cs.setDouble(1, SocioBD.socio(usuario.getSocio()).getCuota().getImporte());
+                            cs.execute();
+                            ResultSet rs = (ResultSet) cs.getObject(1);
+                            try {
+                                precio = rs.getDouble(1);
+                            } catch (SQLException ex) {
+                                precio = 11.25;
+                            }
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                    } else {
+                        precio = SocioBD.socio(usuario.getSocio()).getCuota().getImporte();
+                    }
+                    vp.getPrecioCuota().setText(String.valueOf(precio));
+                    frame.setContentPane(vp.getPanel1());
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.pack();
+                    frame.setVisible(true);
+                }
+            }
+        });
+    }
+
+    public JButton getPagarCuotaButton() {
+        return pagarCuotaButton;
     }
 
     public Usuario getUsuario() {

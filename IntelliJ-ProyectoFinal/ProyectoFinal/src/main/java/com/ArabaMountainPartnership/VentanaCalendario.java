@@ -22,9 +22,10 @@ public class VentanaCalendario {
     private JButton volverButton;
     private JLabel actividadAnteriorLabel;
     private JLabel actividadFuturaLabel;
+    private JButton apuntarseButton;
     private JFrame frame2;
     private List<Actividad> actividades = ActividadBD.actividadesOrdeandasFecha();
-
+    private Usuario usuario;
 
     public VentanaCalendario() {
 
@@ -50,6 +51,36 @@ public class VentanaCalendario {
             }
         });
 
+        apuntarseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VentanaPago vp = new VentanaPago();
+                JFrame frame = new JFrame("Ventana Pago Actividad");
+                vp.setFrame2(frame);
+                Actividad actividad = actividades.get(0);
+                boolean actividadEncontrada = false;
+                double precio = actividad.getPrecio();
+                for (int i = 0; i < actividades.size(); i++) {
+                    if (actividades.get(i).getFecha().equals(datePicker1.getSelectedDate())) {
+                        actividad = actividades.get(i);
+                        actividadEncontrada = true;
+                        i = actividades.size();
+                    }
+                }
+                if (actividadEncontrada) {
+                    precio = actividad.getPrecio();
+                }
+                vp.setActividad(actividad);
+                vp.getPrecioCuota().setText(String.valueOf(precio));
+                vp.setPagarActividad(true);
+                vp.getMensajePrecioCuota().setText("Pagar actividad: ");
+                vp.setUsuario(usuario);
+                frame.setContentPane(vp.getPanel1());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
     }
 
     public void actualizarDatosActividad(LocalDate fecha) {
@@ -85,12 +116,15 @@ public class VentanaCalendario {
             }
             precioLabel.setText(String.valueOf(actividad.getPrecio()));
             if (actividad.getMotivoSuspension() == null) {
+                apuntarseButton.setVisible(true);
                 motivoSuspLabel.setText("Sin suspender");
             } else {
+                apuntarseButton.setVisible(false);
                 motivoSuspLabel.setText(actividad.getMotivoSuspension());
             }
             organizadorLabel.setText(actividad.getOrganizador().toString());
         } else {
+            apuntarseButton.setVisible(false);
             tipoActividadLabel.setText("No hay actividad este día");
             dificultadLabel.setText("");
             precioLabel.setText("");
@@ -154,6 +188,14 @@ public class VentanaCalendario {
         }
 
 
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public JButton getApuntarseButton() {
+        return apuntarseButton;
     }
 
     public JPanel getPanel() {
