@@ -12,7 +12,29 @@ public class Cargo {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private Junta junta;
-    private List<Socio> socios = new ArrayList<>();
+    private Socio socio;
+
+    //constructor para CargoBD cargosBasic
+    public Cargo(String tipo, String codSoc) {
+        switch (tipo) {
+            case "PRESIDENTE":
+                this.tipo = TipoCargo.PRESIDENTE;
+                break;
+            case "VICEPRESIDENTE":
+                this.tipo = TipoCargo.VICEPRESIDENTE;
+                break;
+            case "SECRETARIO":
+                this.tipo = TipoCargo.SECRETARIO;
+                break;
+            case "TESORERO":
+                this.tipo = TipoCargo.TESORERO;
+                break;
+            default:
+                this.tipo = TipoCargo.VOCAL;
+                break;
+        }
+        this.socio = SocioBD.socio(codSoc);
+    }
 
     //constructor para CargoBD ó similares
     public Cargo(String tipo, Date fechaInicio, Date fechaFin) {
@@ -55,12 +77,12 @@ public class Cargo {
     public Cargo() {
     }
 
-    public void addSocio(Socio socio) {
-        socios.add(socio);
+    public Socio getSocio() {
+        return socio;
     }
 
-    public List<Socio> getSocios() {
-        return socios;
+    public void setSocio(Socio socio) {
+        this.socio = socio;
     }
 
     public TipoCargo getTipo() {

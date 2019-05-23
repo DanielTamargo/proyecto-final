@@ -18,7 +18,7 @@ public class Actividad {
     private Socio organizador;
     private List<Socio> participantes = new ArrayList<>();
 
-    //constructor para el método recogerActividadesOrganizadas de SocioBD
+    //constructor para el método recogerActividadesOrganizadas de SocioBD ó actividadesOrganizadasFecha de ActividadBD
     public Actividad(String codigo, String tipo, Date fecha, String descripcion, String dificultad, double precio, String motivoSuspension, Socio socio) {
         this.codigo = codigo;
         TipoActividad ta;
@@ -60,9 +60,10 @@ public class Actividad {
         this.organizador = socio;
     }
 
-    public Actividad(String codigo, TipoActividad actividad, TipoDificultad dificultad, String descripcion, double precio, Socio organizador) {
+    public Actividad(String codigo, TipoActividad actividad, LocalDate fecha, TipoDificultad dificultad, String descripcion, double precio, Socio organizador) {
         this.codigo = codigo;
         this.actividad = actividad;
+        this.fecha = fecha;
         this.dificultad = dificultad;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -70,6 +71,14 @@ public class Actividad {
     }
 
     public Actividad() {
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
     public void addParticipante(Socio socio) {

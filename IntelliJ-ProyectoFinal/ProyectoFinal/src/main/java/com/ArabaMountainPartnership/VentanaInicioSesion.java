@@ -60,6 +60,12 @@ public class VentanaInicioSesion {
                     frame.setContentPane(vp.getPanel());
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.pack();
+                    vp.getNombreUsuarioLabel().setText(usuario.getNombre());
+                    if (!SocioBD.socio(usuario.getSocio()).isHaPagado()) {
+                        vp.getNoHaPagadoPrimLabel().setText("Cuota no pagada.");
+                        vp.getNoHaPagadoSegLabel().setText("Pague su cuota antes del");
+                        vp.getNoHaPagadoTercLabel().setText("31 de Diciembre");
+                    }
                     frame.setVisible(true);
                     frame2.dispose();
                 } else {

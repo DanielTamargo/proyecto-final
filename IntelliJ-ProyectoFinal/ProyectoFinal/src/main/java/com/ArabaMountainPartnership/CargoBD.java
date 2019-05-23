@@ -7,35 +7,32 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CuotaBD {
+public class CargoBD {
 
-    public static List<Cuota> cuotas() {
+    public static List<Cargo> cargosBasic(){
 
-        List<Cuota> lista = new ArrayList<>();
-
+        List<Cargo> lista = new ArrayList<>();
         Connection conexion = GestorBD.conectar();
 
         try {
-            //primer st sql y rs para recoger los datos de la cuota en sí
+            //primer st sql y rs para recoger los datos del socio en sí
             Statement st = conexion.createStatement();
-            String sql = "SELECT * FROM CUOTAS";
+            String sql = "SELECT * FROM CARGOS";
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                //añadimos todos los datos de la cuota correctamente a la lista
-                lista.add(new Cuota(
-                        rs.getDouble("importe"),
-                        rs.getDate("anyoValidez")));
+                //añadimos todos los datos del socio correctamente creados a la lista
+                lista.add(new Cargo(
+                        rs.getString("tipo"),
+                        rs.getString("codSoc")
+                ));
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         GestorBD.desconectar();
-
         return lista;
     }
-
 
 }

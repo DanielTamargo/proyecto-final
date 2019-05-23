@@ -56,7 +56,6 @@ public class VentanaFichaPersonal {
         } else {
             cuotaPagadaLabel.setText("No");
         }
-
     }
 
     public VentanaFichaPersonal() {
@@ -64,18 +63,6 @@ public class VentanaFichaPersonal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                //JFrame frame = new JFrame("Ficha personal");
-                //frame.setContentPane(panel);
-                //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                //frame.pack();
-                //frame.setVisible(false);
-
-                //setVisible(false); //you can't see me!
-                /*try {
-                    dispose(); //Destroy the JFrame object
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }*/
             }
         });
         cambiarDatosButton.addActionListener(new ActionListener() {

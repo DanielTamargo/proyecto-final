@@ -34,7 +34,6 @@ public class SocioBD {
 
     public static void cambiarEmailTelefono(String codigo, String email, int telefono) {
         Connection conexion = GestorBD.conectar();
-
         try {
             String sql;
             PreparedStatement st;
@@ -52,6 +51,7 @@ public class SocioBD {
         } catch (SQLException se) {
             se.printStackTrace();
         }
+        GestorBD.desconectar();
     }
 
     public static void guardar(Socio socio) {
@@ -61,10 +61,10 @@ public class SocioBD {
             String sql;
             PreparedStatement st;
             //comprobar este insert
-            sql = "INSERT INTO SOCIOS(codigo, nombre, apellidos, fechaNac, " +
+            sql = "INSERT INTO SOCIOS (codigo, nombre, apellidos, fechaNac, " +
                     "dni, telefono, email, perfil, fechaAlta, fechaBaja, haPagado, importeCuota, " +
                     "anyoValidezCuota, socioResponsable VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            st = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            st = conexion.prepareStatement(sql);
             st.setString(1, socio.getCodigo());
             st.setString(2, socio.getNombre());
             st.setString(3, socio.getApellidos());
@@ -122,9 +122,12 @@ public class SocioBD {
                     }
                 }
             }
+            st.executeUpdate();
+            st.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        GestorBD.desconectar();
     }
 
     public static Socio socio(String codigo) {
