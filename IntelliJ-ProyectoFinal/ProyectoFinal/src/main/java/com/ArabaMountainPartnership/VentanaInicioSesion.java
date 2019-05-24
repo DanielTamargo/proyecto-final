@@ -55,8 +55,8 @@ public class VentanaInicioSesion {
                     if (socio.getPerfil() == TipoPerfil.USUARIO) {
                         vp.getPanelEspecialAdministrador().setVisible(false);
                     }
-                    vp.getNombreUsuarioLabel().setText(usuario.getNombre());
-                    if (socio.isHaPagado()) {
+                    vp.getNombreUsuarioLabel().setText("Bienvenido/a " + usuario.getNombre());
+                    if (!socio.isHaPagado()) {
                         vp.getNoHaPagadoPrimLabel().setText("Cuota no pagada.");
                         vp.getNoHaPagadoSegLabel().setText("Pague su cuota antes del");
                         vp.getNoHaPagadoTercLabel().setText("31 de Diciembre");

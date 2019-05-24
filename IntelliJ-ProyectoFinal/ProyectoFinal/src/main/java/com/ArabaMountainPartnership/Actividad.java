@@ -23,14 +23,14 @@ public class Actividad {
 
     /**
      * Constructor para el método recogerActividadesOrganizadas de SocioBD ó activiadesOrganizadasFecha de ActividadBD
-     * @param codigo
-     * @param tipo
-     * @param fecha
-     * @param descripcion
-     * @param dificultad
-     * @param precio
-     * @param motivoSuspension
-     * @param socio
+     * @param codigo String
+     * @param tipo String
+     * @param fecha Date
+     * @param descripcion String
+     * @param dificultad String
+     * @param precio double
+     * @param motivoSuspension String
+     * @param socio Socio
      *
      */
     //constructor para el método recogerActividadesOrganizadas de SocioBD ó actividadesOrganizadasFecha de ActividadBD
@@ -78,13 +78,13 @@ public class Actividad {
 
     /**
      * Constructor general
-     * @param codigo
-     * @param actividad
-     * @param fecha
-     * @param dificultad
-     * @param descripcion
-     * @param precio
-     * @param organizador
+     * @param codigo String
+     * @param actividad TipoActividad
+     * @param fecha LocalDate
+     * @param dificultad TipoDificultad
+     * @param descripcion String
+     * @param precio double
+     * @param organizador Socio
      */
     public Actividad(String codigo, TipoActividad actividad, LocalDate fecha, TipoDificultad dificultad, String descripcion, double precio, Socio organizador) {
         this.codigo = codigo;
@@ -102,6 +102,11 @@ public class Actividad {
     public Actividad() {
     }
 
+    @Override
+    public String toString() {
+        return "Cod: " + codigo + ". " + organizador;
+    }
+
     /**
      * Getter de fecha
      * @return fecha
@@ -112,7 +117,7 @@ public class Actividad {
 
     /**
      * Setter de fecha
-     * @param fecha
+     * @param fecha LocalDate
      */
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
@@ -120,7 +125,7 @@ public class Actividad {
 
     /**
      * Método para añadir un participante a la lista participantes
-     * @param socio
+     * @param socio Socio
      */
     public void addParticipante(Socio socio) {
         participantes.add(socio);

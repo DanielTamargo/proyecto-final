@@ -28,61 +28,73 @@ public class VentanaPago {
         pagarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    //como no vamos a hacer un método de pago real, hemos hecho una ventana un poco divertida
-                    boolean paypal = false;
-                    boolean tarjeta = false;
-                    if (!textField1.getText().equalsIgnoreCase("") && !String.valueOf(passwordField1.getPassword()).equalsIgnoreCase("")) {
-                        paypal = true;
-                    }
-                    if (!textField2.getText().equalsIgnoreCase("") &&
-                            !textField3.getText().equalsIgnoreCase("") &&
-                            !textField4.getText().equalsIgnoreCase("") &&
-                            !textField5.getText().equalsIgnoreCase("")) {
-                        tarjeta = true;
-                    }
+                //como no vamos a hacer un método de pago real, hemos hecho una ventana un poco divertida
+                boolean paypal = false;
+                boolean tarjeta = false;
+                if (!textField1.getText().equalsIgnoreCase("") &&
+                        !String.valueOf(passwordField1.getPassword()).equalsIgnoreCase("")) {
+                    paypal = true;
+                }
+                if (!textField2.getText().equalsIgnoreCase("") &&
+                        !textField3.getText().equalsIgnoreCase("") &&
+                        !textField4.getText().equalsIgnoreCase("") &&
+                        !textField5.getText().equalsIgnoreCase("")) {
+                    tarjeta = true;
+                }
 
-                    if (paypal && tarjeta) {
-                        estadoPagoLabel.setText("¡Has rellenado los dos métodos de pago!");
-                        mensaje1Label.setText("¡Qué gracioso!");
-                        mensaje2Label.setText("No te preocupes. Te cobramos dos veces.");
-                        Thread.sleep(250);
-                    }
+                if (paypal && tarjeta) {
+                    estadoPagoLabel.setText("¡Has rellenado los dos métodos de pago!");
+                    mensaje1Label.setText("¡Qué gracioso!");
+                    mensaje2Label.setText("No te preocupes. Te cobramos dos veces.");
+                    //Thread.sleep(250);
+                }
 
-                    if (paypal || tarjeta) {
-                        estadoPagoLabel.setText("Procesando datos");
-                        Thread.sleep(250);
-                        estadoPagoLabel.setText("Procesando datos.");
-                        Thread.sleep(250);
-                        estadoPagoLabel.setText("Procesando datos..");
-                        Thread.sleep(250);
-                        estadoPagoLabel.setText("Procesando datos...");
-                        Thread.sleep(250);
-                        estadoPagoLabel.setText("Procesando datos.");
-                        Thread.sleep(300);
-                        estadoPagoLabel.setText("Procesando datos..");
-                        Thread.sleep(300);
-                        estadoPagoLabel.setText("Cotejando datos");
-                        Thread.sleep(500);
-                        estadoPagoLabel.setText("Cobrando el pago");
-                        Thread.sleep(300);
-                        mensaje1Label.setText("Es muuuy seguro no tener que introducir ningún dato más");
-                        Thread.sleep(300);
+                if (paypal || tarjeta) {
+                    estadoPagoLabel.setText("Procesando datos");
+                    //Thread.sleep(250);
+                    estadoPagoLabel.setText("Procesando datos.");
+                    //Thread.sleep(250);
+                    estadoPagoLabel.setText("Procesando datos..");
+                    //Thread.sleep(250);
+                    estadoPagoLabel.setText("Procesando datos...");
+                    //Thread.sleep(250);
+                    estadoPagoLabel.setText("Procesando datos.");
+                    //Thread.sleep(300);
+                    estadoPagoLabel.setText("Procesando datos..");
+                    //Thread.sleep(300);
+                    estadoPagoLabel.setText("Cotejando datos");
+                    //Thread.sleep(500);
+                    estadoPagoLabel.setText("Cobrando el pago");
+                    //Thread.sleep(300);
+                    mensaje1Label.setText("Es muuuy seguro no tener que introducir ningún dato más");
+                    //Thread.sleep(300);
+                    try {
                         mensaje2Label.setText("No te preocupes " + SocioBD.socio(usuario.getSocio()).getNombre() + ", en ArabaMountainPartnership no robamos");
-                        Thread.sleep(500);
-                        mensaje1Label.setText("");
-                        mensaje2Label.setText("");
-                        if (pagarActividad) {
-                            ParticipacionBD.guardarParticipacion(usuario.getSocio(), actividad.getCodigo());
-                        }
-                        estadoPagoLabel.setText("Pago realizado");
-                        mensaje1Label.setText("Cerrando ventana");
-                        Thread.sleep(300);
-                        SocioBD.pagarCuota(usuario.getSocio());
-                        frame2.dispose();
+                    } catch (NullPointerException eex){
+                        mensaje2Label.setText("No te preocupes, en ArabaMountainPartnership no robamos");
+
                     }
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
+                    //Thread.sleep(500);
+                    mensaje1Label.setText("");
+                    mensaje2Label.setText("");
+                    if (pagarActividad) {
+                        ParticipacionBD.guardarParticipacion(usuario.getSocio(), actividad.getCodigo());
+                    } else {
+                        SocioBD.pagarCuota(usuario.getSocio());
+                    }
+                    estadoPagoLabel.setText("Pago realizado");
+                    mensaje1Label.setText("Cerrando ventana");
+                    //Thread.sleep(300);
+                    frame2.dispose();
+                    JOptionPane.showMessageDialog(null,
+                            "Pago realizado correctamente",
+                            "Pago realizado",
+                            JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "Rellena los datos de uno de los dos métodos de pago.",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

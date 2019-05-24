@@ -30,7 +30,7 @@ public class JuntaBD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        GestorBD.desconectar();
+        ////GestorBD.desconectar();
 
     }
 
@@ -58,7 +58,7 @@ public class JuntaBD {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        ////GestorBD.desconectar();
 
         return junta;
     }

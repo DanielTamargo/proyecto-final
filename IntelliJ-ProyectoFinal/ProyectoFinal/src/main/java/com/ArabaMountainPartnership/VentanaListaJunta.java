@@ -69,6 +69,10 @@ public class VentanaListaJunta {
         fechaNacLabel.setText(socio.getFechaNac().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 
+    public void setCargos(List<Cargo> cargos) {
+        this.cargos = cargos;
+    }
+
     public JPanel getPanel() {
         return panel;
     }

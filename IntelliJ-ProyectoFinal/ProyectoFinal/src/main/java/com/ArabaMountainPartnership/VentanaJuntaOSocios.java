@@ -44,6 +44,7 @@ public class VentanaJuntaOSocios {
                 JFrame frame = new JFrame("Lista Junta");
                 frame.setContentPane(vlj.getPanel());
                 vlj.setFrame2(frame);
+                vlj.actualizarDatos(0);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);

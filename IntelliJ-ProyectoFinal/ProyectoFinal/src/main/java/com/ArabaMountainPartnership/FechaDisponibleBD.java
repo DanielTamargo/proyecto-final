@@ -1,7 +1,6 @@
 package com.ArabaMountainPartnership;
 
-import jdk.vm.ci.meta.Local;
-
+//import jdk.vm.ci.meta.Local;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class FechaDisponibleBD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
 
     }
 
@@ -50,7 +49,7 @@ public class FechaDisponibleBD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
     }
 
     //pasando el dato en tipo FechaDisponible
@@ -73,7 +72,7 @@ public class FechaDisponibleBD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
 
     }
 
@@ -121,7 +120,7 @@ public class FechaDisponibleBD {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
 
         return lista;
     }

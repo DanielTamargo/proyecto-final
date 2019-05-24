@@ -32,7 +32,7 @@ public class CuotaBD {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
 
         return lista;
     }

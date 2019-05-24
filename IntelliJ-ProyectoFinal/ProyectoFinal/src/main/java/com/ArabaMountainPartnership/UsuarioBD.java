@@ -24,7 +24,7 @@ public class UsuarioBD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
     }
 
     public static List<Usuario> usuarios() {
@@ -52,7 +52,7 @@ public class UsuarioBD {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
 
         return lista;
     }

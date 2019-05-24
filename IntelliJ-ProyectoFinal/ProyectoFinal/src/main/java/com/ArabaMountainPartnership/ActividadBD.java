@@ -37,7 +37,7 @@ public class ActividadBD {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
         return actividad;
     }
 
@@ -94,7 +94,7 @@ public class ActividadBD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
     }
 
     public static String generarCodigo() {
@@ -140,7 +140,7 @@ public class ActividadBD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
     }
 
     public static List<Actividad> actividadesOrganizadasPorUnSocio(String codigoSocio) {
@@ -152,7 +152,7 @@ public class ActividadBD {
         try {
             //primer st sql y rs para recoger los datos del socio en sí
             Statement st = conexion.createStatement();
-            String sql = "SELECT * FROM ACTIVIDADES WHERE CODIGO = '" + codigoSocio + "' ORDER BY FECHA DESC";
+            String sql = "SELECT * FROM ACTIVIDADES WHERE organizador = '" + codigoSocio + "' ORDER BY FECHA DESC";
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
@@ -169,11 +169,13 @@ public class ActividadBD {
                         socio
                 ));
             }
+
+            st.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
 
         return lista;
     }
@@ -204,11 +206,12 @@ public class ActividadBD {
                         socio
                 ));
             }
+            st.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
 
         return lista;
     }
@@ -243,7 +246,7 @@ public class ActividadBD {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
 
         return lista;
     }

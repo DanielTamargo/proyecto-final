@@ -29,32 +29,47 @@ public class VentanaActividadesOrganizadas {
     public VentanaActividadesOrganizadas() {
         list1.addListSelectionListener(e -> {
             Actividad actividad = (Actividad) list1.getSelectedValue();
-            codigoLabel.setText(actividad.getCodigo());
-            if (actividad.getActividad() == TipoActividad.ALBERGUEFINDESEMANA) {
-                tipoLabel.setText("Albergue fin de semana");
-            } else if (actividad.getActividad() == TipoActividad.SALIDAALMONTE) {
-                tipoLabel.setText("Salida al monte");
-            } else if (actividad.getActividad() == TipoActividad.REUNION) {
-                tipoLabel.setText("Reunión");
-            } else if (actividad.getActividad() == TipoActividad.COMIDA) {
-                tipoLabel.setText("Comida");
-            } else {
-                tipoLabel.setText("Otros");
+            try {
+                codigoLabel.setText(actividad.getCodigo());
+            } catch (NullPointerException ex) {
+                //ex.printStackTrace();
+                codigoLabel.setText("Error al cargar el código");
             }
-            if (actividad.getDificultad() == TipoDificultad.ALTA) {
-                dificultadLabel.setText("Alta");
-            } else if (actividad.getDificultad() == TipoDificultad.MEDIA) {
-                dificultadLabel.setText("Media");
-            } else {
-                dificultadLabel.setText("Baja");
-            }
-            precioLabel.setText(String.valueOf(actividad.getPrecio()));
-            fechaLabel.setText(actividad.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            descripcionLabel.setText(actividad.getDescripcion());
-            if (actividad.getMotivoSuspension() == null || actividad.getMotivoSuspension().equalsIgnoreCase("")) {
-                motivoSuspLabel.setText("No ha sido suspendida");
-            } else {
-                motivoSuspLabel.setText(actividad.getMotivoSuspension());
+
+            try {
+                if (actividad.getActividad() == TipoActividad.ALBERGUEFINDESEMANA) {
+                    tipoLabel.setText("Albergue fin de semana");
+                } else if (actividad.getActividad() == TipoActividad.SALIDAALMONTE) {
+                    tipoLabel.setText("Salida al monte");
+                } else if (actividad.getActividad() == TipoActividad.REUNION) {
+                    tipoLabel.setText("Reunión");
+                } else if (actividad.getActividad() == TipoActividad.COMIDA) {
+                    tipoLabel.setText("Comida");
+                } else {
+                    tipoLabel.setText("Otros");
+                }
+                if (actividad.getDificultad() == TipoDificultad.ALTA) {
+                    dificultadLabel.setText("Alta");
+                } else if (actividad.getDificultad() == TipoDificultad.MEDIA) {
+                    dificultadLabel.setText("Media");
+                } else {
+                    dificultadLabel.setText("Baja");
+                }
+                precioLabel.setText(String.valueOf(actividad.getPrecio()));
+                fechaLabel.setText(actividad.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                descripcionLabel.setText(actividad.getDescripcion());
+                if (actividad.getMotivoSuspension() == null || actividad.getMotivoSuspension().equalsIgnoreCase("")) {
+                    motivoSuspLabel.setText("No ha sido suspendida");
+                } else {
+                    motivoSuspLabel.setText(actividad.getMotivoSuspension());
+                }
+            } catch (NullPointerException ex) {
+                tipoLabel.setText("");
+                motivoSuspLabel.setText("");
+                fechaLabel.setText("");
+                dificultadLabel.setText("");
+                descripcionLabel.setText("");
+                precioLabel.setText("");
             }
         });
         volverButton.addActionListener(new ActionListener() {
@@ -67,7 +82,16 @@ public class VentanaActividadesOrganizadas {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Actividad actividad = (Actividad) list1.getSelectedValue();
-                if (actividad.getMotivoSuspension().equalsIgnoreCase("") || actividad.getMotivoSuspension() == null) {
+                String suspendida = null;
+                try {
+                    suspendida = actividad.getMotivoSuspension();
+                    if (actividad.getMotivoSuspension() == null) {
+                        suspendida = "";
+                    }
+                } catch (NullPointerException ex) {
+                    suspendida = "";
+                }
+                if (suspendida.equalsIgnoreCase("")) {
                     if (textField1MotivoSusp.getText().length() >= 20) {
                         ActividadBD.suspenderActividad(actividad.getCodigo(), textField1MotivoSusp.getText());
                         actividadesOrganizadas = ActividadBD.actividadesOrganizadasPorUnSocio(usuario.getSocio());

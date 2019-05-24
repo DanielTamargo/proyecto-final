@@ -137,50 +137,75 @@ public class VentanaCalendario {
 
     public void modificarFechaFuturaYAnterior(LocalDate fecha, boolean fechaExiste) {
         Actividad actividad = new Actividad();
+        String fechaFutura;
+        String fechaAnterior;
         int n = -50;
         int anterior;
         int siguiente;
         //confiando en que las actividades estén ordenadas por el select order by asc
         if (fechaExiste) {
             for (int i = 0; i < actividades.size(); i++) {
-                if (actividad.getFecha().equals(fecha)) {
-                    n = i;
-                    i = actividades.size();
+                int x = 0;
+                try {
+                    if (actividad.getFecha().equals(fecha)) {
+                        n = i;
+                        i = actividades.size();
+                    }
+                } catch (NullPointerException e) {
+                    //e.printStackTrace();
                 }
             }
             if (n != -50) {
                 if (n > 0) {
-                    anterior = n -1;
-                    actividadAnteriorLabel.setText("Actividad anterior el: " + actividades.get(anterior).getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                    anterior = n - 1;
+                    fechaAnterior = String.valueOf(actividades.get(anterior).getFecha());
+                    actividadAnteriorLabel.setText("Actividad anterior el: " + fechaAnterior);
                 } else {
                     actividadAnteriorLabel.setText("No hay actividades anteriores a esta");
                 }
-                if (n < actividades.size() -1) {
+                if (n < actividades.size() - 1) {
                     siguiente = n + 1;
-                    actividadFuturaLabel.setText("Actividad futura el: " + actividades.get(siguiente).getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                    fechaFutura = String.valueOf(actividades.get(siguiente).getFecha());
+                    actividadFuturaLabel.setText("Actividad futura el: " + fechaFutura);
                 } else {
                     actividadFuturaLabel.setText("No hay actividades posteriores a esta");
                 }
             } else {
-                actividadAnteriorLabel.setText("Esto no debería estar pasando x.x");
-                actividadFuturaLabel.setText("Esto no debería estar pasando x.x");
+                actividadAnteriorLabel.setText("Clica en cualquier otra fecha para cargar");
+                actividadFuturaLabel.setText("Clica en cualquier otra fecha para cargar");
             }
         } else {
             boolean fechaAnteriorExiste = false;
-            int lastActividadBefore = - 50;
+            int lastActividadBefore = -50;
             for (int i = 0; i < actividades.size(); i++) {
-                if (actividades.get(i).getFecha().isBefore(fecha)) {
-                    fechaAnteriorExiste = true;
-                    lastActividadBefore = i;
+                int x = 0; //salta un null point, pero lo podemos solucionar
+                try {
+                    if (actividades.get(i).getFecha() == null){
+                    }
+                    x++;
+                    if (actividades.get(i).getFecha().isBefore(fecha)) {
+                        fechaAnteriorExiste = true;
+                        lastActividadBefore = i;
+                    }
+                } catch (NullPointerException e) {
+                    //e.printStackTrace();
+                    if (x == 1) {
+                        fechaAnteriorExiste = true;
+                        lastActividadBefore = i;
+                    }
                 }
+
             }
             if (!fechaAnteriorExiste) {
+                fechaFutura = String.valueOf(actividades.get(0).getFecha());
                 actividadAnteriorLabel.setText("No hay actividades anteriores a la fecha seleccionada");
-                actividadFuturaLabel.setText("Actividad futura a la fecha seleccionada el: " + actividades.get(0).getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                actividadFuturaLabel.setText("Actividad futura a la fecha seleccionada el: " + fechaFutura);
             } else {
-                actividadAnteriorLabel.setText("Actividad anterior a la fecha seleccionada el: " + actividades.get(lastActividadBefore).getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                fechaAnterior = String.valueOf( actividades.get(lastActividadBefore).getFecha());
+                actividadAnteriorLabel.setText("Actividad anterior a la fecha seleccionada el: " + fechaAnterior);
                 if (lastActividadBefore + 2 < actividades.size()) {
-                    actividadFuturaLabel.setText("Actividad futura a la fecha seleccionada el: " + actividades.get((lastActividadBefore + 2)).getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                    fechaFutura = String.valueOf(actividades.get((lastActividadBefore + 2)).getFecha());
+                    actividadFuturaLabel.setText("Actividad futura a la fecha seleccionada el: " + fechaFutura);
                 } else {
                     actividadFuturaLabel.setText("No hay actividades futuras a la fecha seleccionada");
                 }

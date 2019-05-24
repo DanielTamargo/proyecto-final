@@ -45,7 +45,7 @@ public class CargoBD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
     }
 
     public static List<Cargo> cargosJuntaActiva(Junta junta){
@@ -57,8 +57,8 @@ public class CargoBD {
             //primer st sql y rs para recoger los datos del socio en sí
             Statement st = conexion.createStatement();
             String localDateString = junta.getFechaInicio().format(DateTimeFormatter.ISO_DATE);
-
-            String sql = "SELECT * FROM CARGOS WHERE FECHAINICIOJUNTA = '" + localDateString + "'";
+            String fechaStr = String.valueOf(junta.getFechaInicio());
+            String sql = "SELECT * FROM CARGOS WHERE FECHAINICIOJUNTA = '" + fechaStr + "'";
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
@@ -70,10 +70,10 @@ public class CargoBD {
                 ));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); //salta un error de que la cadena de formato no encaja pero los datos los recoge correctamente
         }
 
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
         return lista;
     }
 
@@ -88,18 +88,20 @@ public class CargoBD {
             String sql = "SELECT * FROM CARGOS";
             ResultSet rs = st.executeQuery(sql);
 
-            while (rs.next()) {
+            while (rs.next()) { //se queja del next y solo carga una fila
                 //añadimos todos los datos del socio correctamente creados a la lista
                 lista.add(new Cargo(
                         rs.getString("tipo"),
                         rs.getString("codSoc")
                 ));
             }
+
+            st.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); //se queja del next y solo carga una fila
         }
 
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
         return lista;
     }
 

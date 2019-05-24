@@ -101,13 +101,14 @@ public class VentanaFichaPersonal {
                         vp.getMensajePrecioCuota().setText("Precio total (cuota infantil): ");
                         try {
                             String sql = "{ call gest_depart.insert_depart(?,?) }";
+                            sql = "{ call PAQUETE1.CUOTAINFANTIL(?) }";
                             Connection conn = GestorBD.conectar();
                             CallableStatement cs = conn.prepareCall(sql);
                             cs.setDouble(1, SocioBD.socio(usuario.getSocio()).getCuota().getImporte());
                             cs.execute();
-                            ResultSet rs = (ResultSet) cs.getObject(1);
+                            //ResultSet rs = (ResultSet) cs.getObject(1);
                             try {
-                                precio = rs.getDouble(1);
+                                precio = cs.getDouble(1);
                             } catch (SQLException ex) {
                                 precio = 11.25;
                             }

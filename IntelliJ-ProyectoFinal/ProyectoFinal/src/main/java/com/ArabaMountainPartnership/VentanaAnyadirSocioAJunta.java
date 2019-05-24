@@ -31,6 +31,9 @@ public class VentanaAnyadirSocioAJunta {
             public void actionPerformed(ActionEvent e) {
                 LocalDate fecha = datePicker1.getDate();
                 LocalDate now = LocalDate.now();
+                //falta por recoger la fecha final de la junta y comprobar que la fecha que está seleccionado con el
+                //datepicker sea anterior a la fecha final de la junta, si no, mostrar mensaje de error diciendo
+                //"por favor, seleccione una fecha anterior a la fecha fin de la junta: dd-MM-yyyy
                 if (fecha.isAfter(now)) {
                     Junta junta = JuntaBD.juntaActiva();
                     List<Cargo> cargos = CargoBD.cargosJuntaActiva(junta);

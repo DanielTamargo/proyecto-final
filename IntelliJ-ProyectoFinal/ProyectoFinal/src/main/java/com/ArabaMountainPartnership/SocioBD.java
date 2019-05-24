@@ -29,7 +29,7 @@ public class SocioBD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        GestorBD.desconectar();
+        ////GestorBD.desconectar();
     }
 
     public static String generarCodigo(String nombre, String apellidos) {
@@ -72,7 +72,7 @@ public class SocioBD {
         } catch (SQLException se) {
             se.printStackTrace();
         }
-        GestorBD.desconectar();
+        ////GestorBD.desconectar();
     }
 
     public static void guardar(Socio socio) {
@@ -148,7 +148,7 @@ public class SocioBD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        GestorBD.desconectar();
+        ////GestorBD.desconectar();
     }
 
     public static Socio socio(String codigo) {
@@ -159,8 +159,12 @@ public class SocioBD {
             Statement st = conexion.createStatement();
             String sql = "SELECT * FROM SOCIOS WHERE CODIGO = '" + codigo + "'";
             ResultSet rs = st.executeQuery(sql);
-
+            double importe;
+            Date anyoValidez;
             if (rs.next()) {
+                importe = rs.getDouble("importeCuota");
+                anyoValidez = rs.getDate("anyoValidezCuota");
+                Cuota cuota = new Cuota(importe, anyoValidez);
                 socio = new Socio(
                         rs.getString("codigo"),
                         rs.getString("nombre"),
@@ -173,7 +177,8 @@ public class SocioBD {
                         rs.getString("perfil"),
                         rs.getDate("fechaAlta"),
                         rs.getDate("fechaBaja"),
-                        rs.getString("haPagado")
+                        rs.getString("haPagado"),
+                        cuota
                 );
             }
 
@@ -183,7 +188,7 @@ public class SocioBD {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        //////GestorBD.desconectar();
         return socio;
     }
 
@@ -219,7 +224,7 @@ public class SocioBD {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        ////GestorBD.desconectar();
     }
 
     //enviamos código de socio, recogemos importe y año validez
@@ -247,7 +252,7 @@ public class SocioBD {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        ////GestorBD.desconectar();
     }
 
     public static void recogerDatosCargo(String codigo) {
@@ -277,7 +282,7 @@ public class SocioBD {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        ////GestorBD.desconectar();
     }
 
     //pasar dos Strings, el código del socio y el código del socio responsable
@@ -316,7 +321,7 @@ public class SocioBD {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        ////GestorBD.desconectar();
     }
 
     //recoge una lista de los datos base y más principales de los socios
@@ -354,7 +359,7 @@ public class SocioBD {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        ////GestorBD.desconectar();
 
         return lista;
     }

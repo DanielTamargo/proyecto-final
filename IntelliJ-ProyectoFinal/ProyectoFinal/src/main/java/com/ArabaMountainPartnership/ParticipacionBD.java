@@ -24,7 +24,7 @@ public class ParticipacionBD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
 
     }
 
@@ -50,7 +50,7 @@ public class ParticipacionBD {
             e.printStackTrace();
         }
 
-        GestorBD.desconectar();
+        //GestorBD.desconectar();
 
         return lista;
 

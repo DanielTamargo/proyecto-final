@@ -44,7 +44,29 @@ public class VentanaOrganizarActividad {
                 } else if (actividadSeleccionada.equalsIgnoreCase("COMIDA")) {
                     actividad = TipoActividad.COMIDA;
                 }
-                String fechaTexto = (String)comboBox3Fecha.getSelectedItem();
+                String fechaTexto1 = (String)comboBox3Fecha.getSelectedItem();
+                char letra;
+                String fechaTexto = "";
+                letra = fechaTexto1.charAt(6);
+                fechaTexto = fechaTexto + letra;
+                letra = fechaTexto1.charAt(7);
+                fechaTexto = fechaTexto + letra;
+                letra = fechaTexto1.charAt(8);
+                fechaTexto = fechaTexto + letra;
+                letra = fechaTexto1.charAt(9);
+                fechaTexto = fechaTexto + letra;
+                fechaTexto = fechaTexto + "-";
+                letra = fechaTexto1.charAt(3);
+                fechaTexto = fechaTexto + letra;
+                letra = fechaTexto1.charAt(4);
+                fechaTexto = fechaTexto + letra;
+                fechaTexto = fechaTexto + "-";
+                letra = fechaTexto1.charAt(0);
+                fechaTexto = fechaTexto + letra;
+                letra = fechaTexto1.charAt(1);
+                fechaTexto = fechaTexto + letra;
+
+                System.out.println(fechaTexto);
                 LocalDate fecha = LocalDate.parse(fechaTexto);
                 Socio socio = SocioBD.socio(usuario.getSocio());
                 double precio;
@@ -78,7 +100,7 @@ public class VentanaOrganizarActividad {
 
     public void actualizarComboBoxFecha() {
         DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
-        List<Actividad> listaFechasDisponibles = ActividadBD.actividadesOrdeandasFecha();
+        List<FechaDisponible> listaFechasDisponibles = FechaDisponibleBD.fechasDisponibles();
         LocalDate now = LocalDate.now();
 
         //confiando en que las actividades estén ordenadas por fecha ascendente
