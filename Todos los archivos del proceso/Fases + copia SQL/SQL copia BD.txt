@@ -1,3 +1,30 @@
+-- A TENER EN CUENTA
+-- 1. No hemos creado indexes más allá de los que crea el propio programa con las PK (no los considerábamos necesarios)
+-- 2. Para dar privilegios y que los administradores puedan realizar funciones CRUD (Create Read Update Delete) utilizaríamos estos comandos, primero crearíamos el usuario para el administrador y luego le otorgaríamos privilegios. Asímismo se los quitaríamos una vez terminase esa junta y/o perdiese el cargo.
+------ Crear usuario: CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
+------ Dar privilegios: GRANT ALL PRIVILEGES ON database.table TO 'user'@'localhost';
+------ Denegar privilegios: DENY ALL PRIVILEGES ON database.table TO 'user'@'localhost';
+---------- En java, nos basamos en el valor de la variable "perfil" cuyo valor es "usuario" ó "administrador", utilizando este valor mostraremos unos datos y opciones u otros
+-- 3. Nos gustaría tener los siguientes procedimientos automáticos (por fecha)
+------ 3.1. Procedimiento que cree automáticamente una Junta al finalizar la actual (aquí podríamos barajar la posibilidad de que los miembros se eligiesen al azar, o se determinasen con antelación, etc)
+------ 3.2. Procedimiento que dé de baja automáticamente a los socios que no hayan pagado su cuota (asímismo un trigger o el propio procedimiento dará de baja a los socios de los que este sea responsable)
+------ 3.3. Procedimiento que restablezca automáticamente el valor "haPagado" de la tabla Socios a 'NO' (haPagado = false en Java) 
+-- 4. Con el gran uso que le hemos dado a Java no hemos creado procedimientos que recorran listas usando Cursores y FETCH, pero los hemos tenido totalmente en cuenta
+-- 5. Los problemas con el ordenador y su repentino formateo nos hicieron perder parte de los progresos tanto en código como en base de datos, somos conscientes de quizás haber olvidado algún método o procedimiento que teníamos encaminado preo creemos haber recuperado la gran mayoría de lo perdido
+-- 6. Consideramos que las Juntas se deberían crear directamente desde la base de datos, puesto que bajo nuestro punto de vista, se deberían definir los plazos de la junta y los socios que participarán con los distintos cargos, una vez finalizase la Junta activa, se debería crear una nueva junta (INSERT INTO JUNTAS...) una nueva junta anual o semestral introduciendo también los nuevos cargos para los socios (y que uno o varios triggers se encargasen de modificar automáticamente los perfiles USUARIO/ADMINISTRADOR en la tabla SOCIOS
+
+-- REFLEXIÓN
+-- Pese a haber diseñado a conciencia los primeros diagramas, hemos visto que finalmente se han necesitado una infinidad de métodos nuevos así como clases (por ejemplo, en nuestro caso, por cada clases hemos creado otra clase llamada similarmente pero acabada en BD, por ejemplo, Socio y SocioBD, SocioBD contenía todos los métodos para realizar llamadas a los datos, inserciones, updates...)
+-- Creemos que el proyecto nos ha servido para aprender bastante, una grandísima parte de aprender tanto en programación como en base de datos consiste en informarse uno mismo por su cuenta, y con este proyecto todos nos hemos visto forzados a navegar por una inmensa cantidad de páginas buscando la información necesitada, aprendiendo a entender cómo explica la gente estos códigos y a tener ese conocimiento base de "cómo y dónde buscar" (aunque a veces las búsquedas no tenían mucho éxito). Además, el programar una cosa que te da error una y otra vez hace que una vez lo consigas, lo almacenes mejor en tu memoria, en cambio si te lo dan hecho, lo aprendes de pasada y es más fácil olvidarlo.
+-- Este proyecto podría enredarse y complicarse tanto como quisieramos, cada vuelta que le damos se nos ocurre un método más, una forma de hacer más eficiente el código de Java, un nuevo procedimiento o trigger...
+
+-- DUDAS AÚN PENDIENTES:
+-- 1- Cómo programar que un procedimiento se ejecute en una determinada fecha
+-- 2- Errores con el Trigger, comprobar
+
+
+
+-- SELECTS Y DESCRIBES COMUNES
 DESCRIBE CUOTAS;
 DESCRIBE USUARIOS;
 DESCRIBE SOCIOS;
@@ -5,65 +32,28 @@ SELECT * FROM SOCIOS;
 SELECT * FROM USUARIOS;
 SELECT * FROM CARGOS;
 SELECT * FROM ACTIVIDADES;
-ALTER TABLE ACTIVIDADES MODIFY PRECIO NUMBER(5,2);
-
-
-INSERT INTO CUOTAS VALUES(15, '31/12/2021');
-
-
-
-
-INSERT INTO USUARIOS VALUES('dani','dani','1111a');
-
---Usuarios normales 
---1
-INSERT INTO CUOTAS VALUES(15, '31/12/2020');
-INSERT INTO SOCIOS VALUES('LF458','Lucía','Fernández Solano','28/05/1994','71122252C',648703266,'luciafernandz@gmail.com','USUARIO',SYSDATE,NULL,15,'31/12/2020',NULL,'NO');
-INSERT INTO JUNTAS VALUES('01/05/2019', '01/05/2020');
---NO TIENE CARGO
-INSERT INTO ACTIVIDADES VALUES('ACTN2','COMIDA','07/06/2019','Actividad número 2, prueba','ALTA',12.10,NULL,'LF458');
-
-INSERT INTO USUARIOS VALUES('lucia','lucia','LF458');
---2
-
-
---Usuarios administradores
---1
-INSERT INTO CUOTAS VALUES(15, '31/12/2021');
-INSERT INTO SOCIOS VALUES('EB420','Elena','Zamora Blanco','28/05/1994','71122252C',648703266,'elenazamora@gmail.com','USUARIO',SYSDATE,NULL,15,'31/12/2020',NULL,'NO');
---JUNTA YA EXISTE
-INSERT INTO CARGOS VALUES('PRESIDENTE','01/05/2019','01/05/2020','EB420','01/05/2019');
-INSERT INTO ACTIVIDADES VALUES('ACTN1','OTROS','06/06/2019','Actividad número 1, prueba','BAJA',12.10,NULL,'EB420');
-INSERT INTO PARTICIPACIONES VALUES('EB420', 'ACTN1');
-INSERT INTO FECHASDISPONIBLES VALUES('25/09/2019','EB420');
-INSERT INTO USUARIOS VALUES('elena','elena','EB420');
---2
-
-
+SELECT * FROM USER_CONSTRAINTS ORDER BY CONSTRAINT_NAME DESC;
+SELECT * FROM ALL_CONS_COLUMNS;
+SET SERVEROUTPUT ON;
+SHOW ERRORS;
 
 --------------------------------------------------------------------------------
 
--- PROYECTO FINAL, CONSULTORIA E-SPORTS GRUPO MONTAÑA ARABA
+-- PROYECTO FINAL, GRUPO MONTAÑA ARABA (com.ArabaMountainPartnership)
 --Usuarios específicos para el proyecto: eqdam07 / eqdam07
 
 --Notas:
 ------- Definimos las FK como ON DELETE SET NULL puesto que en el enunciado no se nos indica que se busque una continua depuración
----- de datos, donde solo se mantengan los estrictamente necesarios. Por lo que optamos por almacenar todos los datos posibles
+---- de datos, donde solo se mantengan los estrictamente necesarios. Por lo que optamos por almacenar todos los datos posibles (evadiendo ON DELETE CASCADE)
 
-SELECT * FROM USER_CONSTRAINTS ORDER BY CONSTRAINT_NAME DESC;
-SELECT * FROM ALL_CONS_COLUMNS;
-DESCRIBE CUOTAS;
-DESCRIBE SOCIOS;
-SET SERVEROUTPUT ON;
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
---Creación de tablas
+--Creación de tablas (en orden)
 CREATE TABLE CUOTAS(
 importe NUMBER(5,2),
 anyoValidez DATE,
 CONSTRAINT CUO_MULTI_PK PRIMARY KEY(importe, anyoValidez)
 );
-
 
 CREATE TABLE SOCIOS(
 codigo VARCHAR2(5) CONSTRAINT SOC_COD_PK PRIMARY KEY,
@@ -124,6 +114,8 @@ CONSTRAINT ACT_TIPODIFICULTAD_CK CHECK(dificultad IN('ALTA','BAJA','MEDIA'))
 );
 --motivoSuspensión, si su valor es null representa que no ha sido suspendida
 --en Java, utilizaremos la clase ActividadSuspendida para rellenar ese dato
+ALTER TABLE ACTIVIDADES MODIFY PRECIO NUMBER(5,2);
+
 
 --llamamos PARTICIPACIONES a las actividades realizadas por los socios
 CREATE TABLE PARTICIPACIONES(
@@ -154,13 +146,39 @@ fecha TIMESTAMP
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
---Inserciones de datos normales
+--Inserciones de datos iniciales (para probar la BBDD la primera semana del proyecto)
 INSERT INTO CUOTAS VALUES(25, '31/12/2019');
 INSERT INTO SOCIOS VALUES('1111a','Daniel','Tamargo Saiz','23/09/1995','728318A',648703216,'danieltamargosaiz@gmail.com','USUARIO',SYSDATE,NULL,25,'31/12/2019',NULL,DEFAULT);
 INSERT INTO SOCIOS VALUES('1111b','Daniela','Tamarga Saiz','23/09/2005','728318A',648703216,'danieltamargosaiz@gmail.com','USUARIO',SYSDATE,NULL,25,'31/12/2019','1111a',DEFAULT);
 
-SET SERVEROUTPUT ON;
-SHOW ERRORS;
+-- Inserciones posteriores
+INSERT INTO USUARIOS VALUES('dani','dani','1111a');
+
+--Usuarios normales 
+--1. Lucía Fernández
+INSERT INTO CUOTAS VALUES(15, '31/12/2020');
+INSERT INTO SOCIOS VALUES('LF458','Lucía','Fernández Solano','28/05/1994','71122252C',648703266,'luciafernandz@gmail.com','USUARIO',SYSDATE,NULL,15,'31/12/2020',NULL,'NO');
+INSERT INTO JUNTAS VALUES('01/05/2019', '01/05/2020');
+--NO TIENE CARGO
+INSERT INTO ACTIVIDADES VALUES('ACTN2','COMIDA','07/06/2019','Actividad número 2, prueba','ALTA',12.10,NULL,'LF458');
+
+INSERT INTO USUARIOS VALUES('lucia','lucia','LF458');
+--2.
+
+
+--Usuarios administradores
+--1. Elena Zamora
+INSERT INTO CUOTAS VALUES(15, '31/12/2021');
+INSERT INTO SOCIOS VALUES('EB420','Elena','Zamora Blanco','28/05/1994','71122252C',648703266,'elenazamora@gmail.com','USUARIO',SYSDATE,NULL,15,'31/12/2020',NULL,'NO');
+--JUNTA YA EXISTE
+INSERT INTO CARGOS VALUES('PRESIDENTE','01/05/2019','01/05/2020','EB420','01/05/2019');
+INSERT INTO ACTIVIDADES VALUES('ACTN1','OTROS','06/06/2019','Actividad número 1, prueba','BAJA',12.10,NULL,'EB420');
+INSERT INTO PARTICIPACIONES VALUES('EB420', 'ACTN1');
+INSERT INTO FECHASDISPONIBLES VALUES('25/09/2019','EB420');
+INSERT INTO USUARIOS VALUES('elena','elena','EB420');
+--2.
+
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --TRIGGERS
@@ -245,7 +263,66 @@ END CONTROLPERFIL;
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
---Procedimientos y funciones (que irán envueltos en un paquete)
+
+
+--Paquete con los procedimientos: RESETEODEPAGOS y DARDEBAJA y la función CUOTAINFANTIL
+CREATE OR REPLACE PACKAGE PAQUETE1 IS
+    PROCEDURE RESETEODEPAGOS;
+    PROCEDURE DARDEBAJA (p_codigo IN SOCIOS.codigo%TYPE);
+    FUNCTION CUOTAINFANTIL (p_cuota IN CUOTAS.importe%type) RETURN NUMBER;
+END;
+
+CREATE OR REPLACE PACKAGE BODY PAQUETE1 IS
+    PROCEDURE RESETEODEPAGOS
+        IS
+        BEGIN
+            UPDATE SOCIOS
+            SET HAPAGADO='NO';
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                RAISE_APPLICATION_ERROR(-20020,'Error al cargar los datos.');
+            WHEN OTHERS THEN
+                RAISE_APPLICATION_ERROR(-20020,'Error desconocido.');
+        END RESETEODEPAGOS;
+    PROCEDURE DARDEBAJA (p_codigo IN SOCIOS.codigo%TYPE)
+        IS
+        BEGIN
+            SELECT COUNT(*) INTO v_num FROM SOCIOS;
+            
+            UPDATE SOCIOS
+            SET FECHABAJA=SYSDATE
+            WHERE CODIGO=p_codigo;
+            
+            UPDATE SOCIOS
+            SET FECHABAJA=SYSDATE
+            WHERE SOCIORESPONSABLE=p_codigo;
+
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                RAISE_APPLICATION_ERROR(-20020,'Error al cargar los datos.');
+            WHEN OTHERS THEN
+                RAISE_APPLICATION_ERROR(-20025,'Error desconocido.');
+        END DARDEBAJA;
+    FUNCTION CUOTAINFANTIL (p_cuota IN CUOTAS.importe%type)
+        RETURN NUMBER
+        IS
+            v_cuota CUOTAS.importe%type;
+        BEGIN
+            v_cuota:=p_cuota * 0.8;
+            RETURN v_cuota;
+        END CUOTAINFANTIL;
+END;
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--Vistas
+CREATE OR REPLACE VIEW CALENDARIO AS   
+    (SELECT A.FECHA, A.TIPO, A.DESCRIPCION, A.PRECIO, S.NOMBRE, S.APELLIDOS, A.MOTIVOSUSPENSION 
+    FROM ACTIVIDADES A, SOCIOS S)
+WITH READ ONLY CONSTRAINT CAL_DML_RO;
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--Procedimientos y funciones que fueron empaquetados
 CREATE OR REPLACE FUNCTION CUOTA_INFANTIL
     (p_cuota IN CUOTAS.importe%type)
 RETURN NUMBER
@@ -296,77 +373,6 @@ EXCEPTION
 END RESETEODEPAGOS;
 DROP PROCEDURE RESETEODEPAGOS; --Lo eliminamos para introducirlo en un paquete
 
---Paquete con los procedimientos: RESETEODEPAGOS y DARDEBAJA y la función CUOTAINFANTIL
-CREATE OR REPLACE PACKAGE PAQUETE1 IS
-    PROCEDURE RESETEODEPAGOS;
-    PROCEDURE DARDEBAJA (p_codigo IN SOCIOS.codigo%TYPE);
-    FUNCTION CUOTAINFANTIL (p_cuota IN CUOTAS.importe%type) RETURN NUMBER;
-END;
-
-CREATE OR REPLACE PACKAGE BODY PAQUETE1 IS
-    PROCEDURE RESETEODEPAGOS
-        IS
-        BEGIN
-            UPDATE SOCIOS
-            SET HAPAGADO='NO';
-        EXCEPTION
-            WHEN NO_DATA_FOUND THEN
-                RAISE_APPLICATION_ERROR(-20020,'Error al cargar los datos.');
-            WHEN OTHERS THEN
-                RAISE_APPLICATION_ERROR(-20020,'Error desconocido.');
-        END RESETEODEPAGOS;
-    PROCEDURE DARDEBAJA (p_codigo IN SOCIOS.codigo%TYPE)
-        IS
-            v_num NUMBER;
-        BEGIN
-            SELECT COUNT(*) INTO v_num FROM SOCIOS;
-            
-            UPDATE SOCIOS
-            SET FECHABAJA=SYSDATE
-            WHERE CODIGO=p_codigo;
-            
-            FOR i IN 1..v_num LOOP
-                UPDATE SOCIOS
-                SET FECHABAJA=SYSDATE
-                WHERE SOCIORESPONSABLE=p_codigo;
-            END LOOP;
-        EXCEPTION
-            WHEN NO_DATA_FOUND THEN
-                RAISE_APPLICATION_ERROR(-20020,'Error al cargar los datos.');
-            WHEN OTHERS THEN
-                RAISE_APPLICATION_ERROR(-20025,'Error desconocido.');
-        END DARDEBAJA;
-    FUNCTION CUOTAINFANTIL (p_cuota IN CUOTAS.importe%type)
-        RETURN NUMBER
-        IS
-            v_cuota CUOTAS.importe%type;
-        BEGIN
-            v_cuota:=p_cuota * 0.8;
-            RETURN v_cuota;
-        END CUOTAINFANTIL;
-END;
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---Vistas
-CREATE OR REPLACE VIEW CALENDARIO AS   
-    (SELECT A.FECHA, A.TIPO, A.DESCRIPCION, A.PRECIO, S.NOMBRE, S.APELLIDOS, A.MOTIVOSUSPENSION 
-    FROM ACTIVIDADES A, SOCIOS S)
-WITH READ ONLY CONSTRAINT CAL_DML_RO;
 
 
 
---Dudas:
--- 1- Cómo programar que un procedimiento ó función se ejecute en una determinada fecha
--- 2- Errores con el Trigger, comprobar
-
-
-
---A tener en cuenta:
--- 1- No hemos creado indexes más allá de los que crea el propio programa con las PK
------- (no los considerábamos necesarios)
--- 2- Para dar privilegios y que los administradores puedan realizar funciones CRUD (Create Read Update Delete) utilizaríamos estos comandos, primero crearíamos el usuario para el administrador y luego le otorgaríamos privilegios. Asímismo se los quitaríamos una vez terminase esa junta y/o perdiese el cargo.
------- Crear usuario: CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
------- Dar privilegios: GRANT ALL PRIVILEGES ON database.table TO 'user'@'localhost';
------- Denegar privilegios: DENY ALL PRIVILEGES ON database.table TO 'user'@'localhost';
----------- En java, nos basamos en el valor de la variable "perfil" cuyo valor es "usuario" ó "administrador", utilizando este valor mostraremos unos datos y opciones u otros
----------- el programa

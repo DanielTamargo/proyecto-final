@@ -152,12 +152,12 @@ public class SocioBD {
     }
 
     public static Socio socio(String codigo) {
-        Socio socio = new Socio();
+        Socio socio = null;
 
         Connection conexion = GestorBD.conectar();
         try {
             Statement st = conexion.createStatement();
-            String sql = "SELECT * FROM SOCIOS WHERE CODIGO = " + codigo;
+            String sql = "SELECT * FROM SOCIOS WHERE CODIGO = '" + codigo + "'";
             ResultSet rs = st.executeQuery(sql);
 
             if (rs.next()) {
@@ -192,7 +192,7 @@ public class SocioBD {
 
         try {
             Statement st = conexion.createStatement();
-            String sql = "SELECT * FROM ACTIVIDADES WHERE ORGANIZADOR=" + codigo;
+            String sql = "SELECT * FROM ACTIVIDADES WHERE ORGANIZADOR = '" + codigo + "'";
             ResultSet rs = st.executeQuery(sql);
 
             Socio socio = new Socio();
@@ -230,7 +230,7 @@ public class SocioBD {
             String sqlcuota;
             ResultSet rscuota;
 
-            sqlcuota = "SELECT IMPORTECUOTA, ANYOVALIDEZCUOTA FROM SOCIOS WHERE CODIGO=" + codigo;
+            sqlcuota = "SELECT IMPORTECUOTA, ANYOVALIDEZCUOTA FROM SOCIOS WHERE CODIGO = '" + codigo + "'";
             rscuota = stcuota.executeQuery(sqlcuota);
 
             if (rscuota.next()) {
@@ -259,7 +259,7 @@ public class SocioBD {
             String sqlcargo;
             ResultSet rscargo;
 
-            sqlcargo = "SELECT * FROM CARGOS WHERE CODSOC=" + codigo;
+            sqlcargo = "SELECT * FROM CARGOS WHERE CODSOC = '" + codigo + "'";
             rscargo = stcargo.executeQuery(sqlcargo);
 
             if (rscargo.next()) {
@@ -290,7 +290,7 @@ public class SocioBD {
             String sqlsocioresp;
             ResultSet rssocioresp;
 
-            sqlsocioresp = "SELECT * FROM SOCIOS WHERE CODIGO=" + codigoSocioResponsable;
+            sqlsocioresp = "SELECT * FROM SOCIOS WHERE CODIGO = '" + codigoSocioResponsable + "'";
             rssocioresp = stsocioresp.executeQuery(sqlsocioresp);
             if (rssocioresp.next()) {
                 for (int i = 0; i < socios().size(); i++) {

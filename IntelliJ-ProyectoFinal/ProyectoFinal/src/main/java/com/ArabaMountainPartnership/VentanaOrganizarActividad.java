@@ -55,14 +55,14 @@ public class VentanaOrganizarActividad {
                     ActividadBD.guardar(actividadNueva);
                     FechaDisponibleBD.eliminarFecha(fecha);
                     JOptionPane.showMessageDialog(null,
-                            "Actividad creada.",
                             "Actividad creada correctamente, si quieres suspenderla accede a tus actividades organizadas desde el menú.",
+                            "Actividad creada",
                             JOptionPane.INFORMATION_MESSAGE);
                     frame2.dispose();
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null,
-                            "Error.",
                             "Se ha producido un error. Comprueba haber escogido una fecha y que el precio esté bien introducido.",
+                            "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }
 

@@ -72,19 +72,19 @@ public class VentanaActividadesOrganizadas {
                         actividadesOrganizadas = ActividadBD.actividadesOrganizadasPorUnSocio(usuario.getSocio());
                         actualizarListaActividades();
                         JOptionPane.showMessageDialog(null,
-                                "Actividad suspendida.",
                                 "Actividad suspendida correctamente.",
-                                JOptionPane.ERROR_MESSAGE);
+                                "Actividad suspendida",
+                                JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(null,
-                                "Error.",
                                 "Introduce al menos 20 caracteres en el motivo de suspensión.",
+                                "Error",
                                 JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
                     JOptionPane.showMessageDialog(null,
-                            "Error.",
                             "No puedes suspender una actividad que ya ha sido suspendida.",
+                            "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -103,8 +103,8 @@ public class VentanaActividadesOrganizadas {
                     actualizarListaActividades();
                 } else {
                     JOptionPane.showMessageDialog(null,
-                            "Error.",
                             "No puedes acceder a esta lista si no eres administrador.",
+                            "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }
             }

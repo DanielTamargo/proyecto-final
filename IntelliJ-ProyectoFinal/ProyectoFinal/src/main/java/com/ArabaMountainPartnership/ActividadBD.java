@@ -39,7 +39,7 @@ public class ActividadBD {
             } else {
                 dificultad = "BAJA";
             }
-
+            
             st.setString(1, codigo);
             st.setString(2, tipo);
             st.setDate(3, Date.valueOf(actividad.getFecha()));
@@ -117,7 +117,7 @@ public class ActividadBD {
         try {
             //primer st sql y rs para recoger los datos del socio en sí
             Statement st = conexion.createStatement();
-            String sql = "SELECT * FROM ACTIVIDADES WHERE CODIGO = " + codigoSocio + " ORDER BY FECHA DESC";
+            String sql = "SELECT * FROM ACTIVIDADES WHERE CODIGO = '" + codigoSocio + "' ORDER BY FECHA DESC";
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {

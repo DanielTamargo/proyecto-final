@@ -15,9 +15,9 @@ public class VentanaPrincipal {
     private JLabel noHaPagadoPrimLabel;
     private JLabel noHaPagadoSegLabel;
     private JLabel noHaPagadoTercLabel;
-    private JButton crearJuntaButton;
     private JButton crearFechaDisponibleButton;
     private JPanel panelEspecialAdministrador;
+    private JButton anyadirSocioAJuntaButton;
     private Usuario usuario;
 
     public VentanaPrincipal() {
@@ -100,6 +100,36 @@ public class VentanaPrincipal {
                 vao.setUsuario(usuario);
                 vao.setActividadesOrganizadas(ActividadBD.actividadesOrganizadasPorUnSocio(usuario.getSocio()));
                 vao.actualizarListaActividades();
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+
+        //(ADMIN) Crear Fecha Disponible
+        crearFechaDisponibleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VentanaCrearFD vcfd = new VentanaCrearFD();
+                JFrame frame = new JFrame("Crear Fecha Disponible");
+                frame.setContentPane(vcfd.getPanel());
+                vcfd.setFrame2(frame);
+                vcfd.setUsuario(usuario);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+
+        //(ADMIN) Añadir socio a la junta
+        anyadirSocioAJuntaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VentanaAnyadirSocioAJunta vasa = new VentanaAnyadirSocioAJunta();
+                JFrame frame = new JFrame("Añadir Socio a Junta");
+                frame.setContentPane(vasa.getPanel());
+                vasa.actualizarListaSocios();
+                vasa.setFrame2(frame);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);

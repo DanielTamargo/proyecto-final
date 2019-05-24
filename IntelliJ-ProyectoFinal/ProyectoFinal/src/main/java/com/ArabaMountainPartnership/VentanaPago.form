@@ -33,14 +33,7 @@
                 </constraints>
                 <properties/>
                 <border type="none"/>
-                <children>
-                  <component id="326c3" class="javax.swing.JButton" binding="pagarConPayPalButton" default-binding="true">
-                    <constraints/>
-                    <properties>
-                      <text value="Pagar con PayPal"/>
-                    </properties>
-                  </component>
-                </children>
+                <children/>
               </grid>
               <component id="b1d0c" class="javax.swing.JLabel">
                 <constraints>

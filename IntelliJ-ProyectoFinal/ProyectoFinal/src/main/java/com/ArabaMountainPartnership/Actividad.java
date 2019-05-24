@@ -40,7 +40,8 @@ public class Actividad {
                 break;
         }
         this.actividad = ta;
-        this.fecha = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        String fechaStr = String.valueOf(fecha);
+        this.fecha = LocalDate.parse(fechaStr);
         this.descripcion = descripcion;
         TipoDificultad td;
         switch (dificultad) {

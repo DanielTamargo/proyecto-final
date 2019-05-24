@@ -14,6 +14,30 @@ public class Cargo {
     private Junta junta;
     private Socio socio;
 
+    //constructor para cargosJuntaActiva
+    public Cargo(String tipo, Date fechaFin, String codSoc) {
+        switch (tipo) {
+            case "PRESIDENTE":
+                this.tipo = TipoCargo.PRESIDENTE;
+                break;
+            case "VICEPRESIDENTE":
+                this.tipo = TipoCargo.VICEPRESIDENTE;
+                break;
+            case "SECRETARIO":
+                this.tipo = TipoCargo.SECRETARIO;
+                break;
+            case "TESORERO":
+                this.tipo = TipoCargo.TESORERO;
+                break;
+            default:
+                this.tipo = TipoCargo.VOCAL;
+                break;
+        }
+        String fechaFinStr = String.valueOf(fechaFin);
+        this.fechaFin = LocalDate.parse(fechaFinStr);
+        this.socio = SocioBD.socio(codSoc);
+    }
+
     //constructor para CargoBD cargosBasic
     public Cargo(String tipo, String codSoc) {
         switch (tipo) {
@@ -55,8 +79,10 @@ public class Cargo {
                 this.tipo = TipoCargo.VOCAL;
                 break;
         }
-        this.fechaInicio = fechaInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        this.fechaFin = fechaFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        String fechaInicioStr = String.valueOf(fechaInicio);
+        this.fechaInicio = LocalDate.parse(fechaInicioStr);
+        String fechaFinStr = String.valueOf(fechaFin);
+        this.fechaFin = LocalDate.parse(fechaFinStr);
     }
 
     //constructor dando por hecho que puede que el cargo exista siempre y la junta se vaya reemplazando (usando setJunta)
@@ -72,6 +98,14 @@ public class Cargo {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.junta = junta;
+    }
+
+    public Cargo(TipoCargo tipo, LocalDate fechaInicio, LocalDate fechaFin, Junta junta, Socio socio) {
+        this.tipo = tipo;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.junta = junta;
+        this.socio = socio;
     }
 
     public Cargo() {

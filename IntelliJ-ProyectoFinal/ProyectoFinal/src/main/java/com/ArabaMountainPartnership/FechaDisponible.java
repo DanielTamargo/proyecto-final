@@ -14,8 +14,10 @@ public class FechaDisponible {
         this.socio = socio;
     }
 
+    //constructor para FechaDisponibleBD
     public FechaDisponible(Date fecha, Socio socio) {
-        this.fecha = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        String fechaStr = String.valueOf(fecha);
+        this.fecha = LocalDate.parse(fechaStr);
         this.socio = socio;
     }
 

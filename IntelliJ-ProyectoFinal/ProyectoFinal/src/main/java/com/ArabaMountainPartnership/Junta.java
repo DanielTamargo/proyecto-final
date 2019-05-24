@@ -2,6 +2,7 @@ package com.ArabaMountainPartnership;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Junta {
@@ -10,6 +11,13 @@ public class Junta {
     private LocalDate fechaFin;
     private List<Cargo> cargos = new ArrayList<>();
 
+    //constructor para JuntaBD
+    public Junta(Date fechaInicio, Date fechaFin) {
+        String fechaInicioStr = String.valueOf(fechaInicio);
+        this.fechaInicio = LocalDate.parse(fechaInicioStr);
+        String fechaFinStr = String.valueOf(fechaFin);
+        this.fechaFin = LocalDate.parse(fechaFinStr);
+    }
 
     public Junta(LocalDate fechaInicio, LocalDate fechaFin) {
         this.fechaInicio = fechaInicio;

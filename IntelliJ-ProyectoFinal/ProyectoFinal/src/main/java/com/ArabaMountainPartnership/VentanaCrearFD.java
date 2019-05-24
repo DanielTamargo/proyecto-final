@@ -1,19 +1,22 @@
 package com.ArabaMountainPartnership;
 
+import com.github.lgooddatepicker.components.DatePicker;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
-public class VentanaCambiarDatosFP {
+public class VentanaCrearFD {
     private JPanel panel;
-    private JButton volverButton;
+    private DatePicker datePicker1;
     private JButton guardarButton;
-    private JTextField textField1email;
-    private JTextField textField2telefono;
-    private JFrame frame2;
+    private JButton volverButton;
     private Usuario usuario;
+    private JFrame frame2;
 
-    public VentanaCambiarDatosFP() {
+
+    public VentanaCrearFD() {
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -23,19 +26,17 @@ public class VentanaCambiarDatosFP {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                try {
-                    String email = textField1email.getText();
-                    int telefono = Integer.parseInt(textField2telefono.getText());
-                    SocioBD.cambiarEmailTelefono(usuario.getSocio(), email, telefono);
+                LocalDate fecha = datePicker1.getDate();
+                if (FechaDisponibleBD.fechaDisponibleLibre(fecha)) {
+                    FechaDisponibleBD.guardar(fecha, usuario.getSocio());
                     JOptionPane.showMessageDialog(null,
-                            "Datos actualizados correctamente.",
-                            "Datos actualizados",
+                            "La fecha ha sido guardada.",
+                            "Proceso realizado",
                             JOptionPane.INFORMATION_MESSAGE);
                     frame2.dispose();
-                } catch (NumberFormatException ex) {
+                } else {
                     JOptionPane.showMessageDialog(null,
-                            "Introduce un teléfono (solo números, sin letras ni caracteres especiales).",
+                            "Esta fecha ya existe ó bien es anterior a la fecha actual.",
                             "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }
@@ -56,8 +57,8 @@ public class VentanaCambiarDatosFP {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("VentanaCambiarDatosFP");
-        frame.setContentPane(new VentanaCambiarDatosFP().panel);
+        JFrame frame = new JFrame("VentanaCrearFD");
+        frame.setContentPane(new VentanaCrearFD().panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

@@ -15,7 +15,8 @@ public class Cuota {
     //constructor CuotaBD
     public Cuota(double importe, Date anyoValidez) {
         this.importe = importe;
-        this.anyoValidez = anyoValidez.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        String anyoValidezStr = String.valueOf(anyoValidez);
+        this.anyoValidez = LocalDate.parse(anyoValidezStr);
     }
 
     //constructor para las cuotas generadas desde el programa
