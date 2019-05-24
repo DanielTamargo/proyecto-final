@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Esta clase guardará los datos de cada objeto Actividad.
+ */
 public class Actividad {
 
     private String codigo;
@@ -18,6 +21,18 @@ public class Actividad {
     private Socio organizador;
     private List<Socio> participantes = new ArrayList<>();
 
+    /**
+     * Constructor para el método recogerActividadesOrganizadas de SocioBD ó activiadesOrganizadasFecha de ActividadBD
+     * @param codigo
+     * @param tipo
+     * @param fecha
+     * @param descripcion
+     * @param dificultad
+     * @param precio
+     * @param motivoSuspension
+     * @param socio
+     *
+     */
     //constructor para el método recogerActividadesOrganizadas de SocioBD ó actividadesOrganizadasFecha de ActividadBD
     public Actividad(String codigo, String tipo, Date fecha, String descripcion, String dificultad, double precio, String motivoSuspension, Socio socio) {
         this.codigo = codigo;
@@ -61,6 +76,16 @@ public class Actividad {
         this.organizador = socio;
     }
 
+    /**
+     * Constructor general
+     * @param codigo
+     * @param actividad
+     * @param fecha
+     * @param dificultad
+     * @param descripcion
+     * @param precio
+     * @param organizador
+     */
     public Actividad(String codigo, TipoActividad actividad, LocalDate fecha, TipoDificultad dificultad, String descripcion, double precio, Socio organizador) {
         this.codigo = codigo;
         this.actividad = actividad;
@@ -71,77 +96,152 @@ public class Actividad {
         this.organizador = organizador;
     }
 
+    /**
+     * Constructor vacío
+     */
     public Actividad() {
     }
 
+    /**
+     * Getter de fecha
+     * @return fecha
+     */
     public LocalDate getFecha() {
         return fecha;
     }
 
+    /**
+     * Setter de fecha
+     * @param fecha
+     */
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
+    /**
+     * Método para añadir un participante a la lista participantes
+     * @param socio
+     */
     public void addParticipante(Socio socio) {
         participantes.add(socio);
     }
 
+    /**
+     * Getter de la lista participantes
+     * @return participantes
+     */
     public List<Socio> getParticipantes() {
         return participantes;
     }
 
+    /**
+     * Getter de codigo
+     * @return codigo
+     */
     public String getCodigo() {
         return codigo;
     }
 
+    /**
+     * Getter de organizador
+     * @return organizador
+     */
     public Socio getOrganizador() {
         return organizador;
     }
 
+    /**
+     * Setter de organizador
+     * @param organizador Socio
+     */
     public void setOrganizador(Socio organizador) {
         this.organizador = organizador;
     }
 
+    /**
+     * Setter de codigo
+     * @param codigo String
+     */
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
+    /**
+     * Getter de actividad (TipoActividad)
+     * @return actividad
+     */
     public TipoActividad getActividad() {
         return actividad;
     }
 
+    /**
+     * Setter de actividad (TipoActividad)
+     * @param actividad TipoActividad
+     */
     public void setActividad(TipoActividad actividad) {
         this.actividad = actividad;
     }
 
+    /**
+     * Getter de dificultad (TipoDificultad)
+     * @return dificultad
+     */
     public TipoDificultad getDificultad() {
         return dificultad;
     }
 
+    /**
+     * Setter dificultad (TipoDificultad)
+     * @param dificultad TipoDificultad
+     */
     public void setDificultad(TipoDificultad dificultad) {
         this.dificultad = dificultad;
     }
 
+    /**
+     * Getter de descripcion
+     * @return descripcion
+     */
     public String getDescripcion() {
         return descripcion;
     }
 
+    /**
+     * Setter de descripcion
+     * @param descripcion String
+     */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
+    /**
+     * Getter de precio
+     * @return precio
+     */
     public double getPrecio() {
         return precio;
     }
 
+    /**
+     * Setter de precio
+     * @param precio Double
+     */
     public void setPrecio(double precio) {
         this.precio = precio;
     }
 
+    /**
+     * Getter de motivoSuspension
+     * @return motivoSuspension
+     */
     public String getMotivoSuspension() {
         return motivoSuspension;
     }
 
+    /**
+     * Setter de motivoSuspension
+     * @param motivoSuspension String
+     */
     public void setMotivoSuspension(String motivoSuspension) {
         this.motivoSuspension = motivoSuspension;
     }

@@ -7,6 +7,41 @@ import java.util.Random;
 
 public class ActividadBD {
 
+    public static Actividad actividad(String codigo) {
+        Actividad actividad = null;
+
+        Connection conexion = GestorBD.conectar();
+        try {
+            Statement st = conexion.createStatement();
+            String sql = "SELECT * FROM ACTIVIDADES WHERE CODIGO = '" + codigo + "'";
+            ResultSet rs = st.executeQuery(sql);
+
+
+            if (rs.next()) {
+                Socio socio = SocioBD.socio(rs.getString("organizador"));
+                actividad = new Actividad(
+                        rs.getString("codigo"),
+                        rs.getString("tipo"),
+                        rs.getDate("fecha"),
+                        rs.getString("descripcion"),
+                        rs.getString("dificultad"),
+                        rs.getDouble("precio"),
+                        rs.getString("motivoSuspension"),
+                        socio
+                );
+            }
+
+            st.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        GestorBD.desconectar();
+        return actividad;
+    }
+
+
     public static void guardar(Actividad actividad) {
 
         Connection conexion = GestorBD.conectar();

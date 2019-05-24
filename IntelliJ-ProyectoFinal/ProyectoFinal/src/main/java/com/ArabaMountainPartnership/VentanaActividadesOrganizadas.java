@@ -20,6 +20,7 @@ public class VentanaActividadesOrganizadas {
     private JButton volverButton;
     private JTextField textField1MotivoSusp;
     private JButton verComoAdministradorButton;
+    private JButton verParticipantesButton;
     private JFrame frame2;
     private Usuario usuario;
     private List<Actividad> actividadesOrganizadas;
@@ -107,6 +108,21 @@ public class VentanaActividadesOrganizadas {
                             "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }
+            }
+        });
+        verParticipantesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VerListaParticipantes vlp = new VerListaParticipantes();
+                JFrame frame = new JFrame("Lista Participantes");
+                frame.setContentPane(vlp.getPanel());
+                Actividad actividad = (Actividad) list1.getSelectedValue();
+                vlp.actualizarDatos();
+                vlp.setCodigoActividad(actividad.getCodigo());
+                vlp.setFrame2(frame);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
             }
         });
     }

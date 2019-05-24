@@ -1,8 +1,8 @@
 package com.ArabaMountainPartnership;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ParticipacionBD {
 
@@ -25,6 +25,35 @@ public class ParticipacionBD {
             e.printStackTrace();
         }
         GestorBD.desconectar();
+
+    }
+
+    public static List<Participacion> participaciones(String codActividad){
+
+        List<Participacion> lista = new ArrayList<>();
+
+        Connection conexion = GestorBD.conectar();
+
+        try {
+            //primer st sql y rs para recoger los datos del socio en sí
+            Statement st = conexion.createStatement();
+            String sql = "SELECT * FROM PARTICIPACIONES WHERE ACTIVIDAD = '" + codActividad + "'";
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                Socio socio = SocioBD.socio(rs.getString("socio"));
+                //añadimos todos los datos del socio correctamente creados a la lista
+                lista.add(new Participacion(
+                        socio
+                        ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        GestorBD.desconectar();
+
+        return lista;
+
 
     }
 
