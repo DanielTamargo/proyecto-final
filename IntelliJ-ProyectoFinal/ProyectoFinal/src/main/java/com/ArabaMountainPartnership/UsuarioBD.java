@@ -21,6 +21,8 @@ public class UsuarioBD {
             st.setString(2, usuario.getContrasenya());
             st.setString(3, usuario.getSocio());
 
+            st.executeUpdate();
+            st.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
