@@ -22,11 +22,7 @@
 -- 1- Cómo programar que un procedimiento se ejecute en una determinada fecha
 -- 2- Errores con el Trigger, comprobar
 
-select * from participaciones;
-insert into participaciones values('1111b','ACTN1');
-commit;
 
-update socios set haPagado = 'NO' where codigo = '9999X';
 
 -- SELECTS Y DESCRIBES COMUNES
 DESCRIBE CUOTAS;

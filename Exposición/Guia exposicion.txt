@@ -1,0 +1,36 @@
+Usuario normal: lucia / lucia
+Usuario admin: elena / elena   //  a / a
+
+Sobre la modificación de añadir la tabla Usuario
+Faltaría por añadir a Socio un atributo usuario para la vinculación de vuelta 
+(ya que solo lo hemos vinculado en un sentido)
+
+
+Triggers:
+SOCIOMAYOR4ANYOS -> controla que el socio insertado sea mayor de 4 años, si no, da error (de todas formas desde Java lo controlamos también)
+CONTROLRESPONSABLE -> controla que el socio menor de edad tiene un responsable
+CONTROLPERFIL -> actualiza automáticamente a administrador los socios que entren en la junta
+Faltaría su antagonista, un trigger que controlase que al eliminarse una junta, todos los socios pierdan su perfil tipo: administrador (además estaría bien controlar que la aplicación no se quede nunca sin administradores (que una junta se elimina sin tener otra creada)
+
+Paquete:
+- Función (transformada a procedimiento) CUOTAINFANTIL recoge un precio y devuelve el precio con descuento
+- Procedimiento RESETEODEPAGOS resetea el valor haPagado a false ('NO' en la bbdd)
+- Procedimiento DARDEBAJA da de baja (establece una fecha de baja) al socio que se le pasa (recibe un código) y a los socios de los cuales este sea responsable
+Faltaría que el procedimiento RESETEODEPAGOS se ejecutase automáticamente en una fecha estimada (1 de Enero de cada año)
+Faltaría que el procedimiento DARDEBAJA se ejecutase automáticamente en una fecha estimada (31 de Diciembre de cada año)
+
+
+Enfoque:
+Tabla usuarios:
+- usuario				se carga la lista en java y se compara
+- contraseña		--->		el usuario y contraseña introducidos
+- socio (código)			y si coincide, accede
+					a través del valor de perfil del socio asociado a 
+					esos datos de acceso definimos si es administrador
+					o usuario
+
+
+En el programa faltarían (que se sepa):
+- Comprobar que al registrarse (en VentanaRegistrarse) haya introducido todos los datos que se queiran tener para evitar nulles innecesarios
+- Error en: al organizar actividad (en VentanaOrganizarActividad) esta se crea directamente sin esperar la aprobación de un administrador
+- En algunas ventanas reestructurar las dimensiones para no tener que andar ajustándolo manualmente (frame.pack o algo así ¿?)

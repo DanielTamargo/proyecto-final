@@ -23,7 +23,8 @@ public class ModeloParticipaciones extends AbstractTableModel {
     private List<Participacion> participaciones;
     private String codigoActividad;
 
-    public ModeloParticipaciones() {
+    public ModeloParticipaciones(String codigo) {
+        this.codigoActividad = codigo;
         participaciones = ParticipacionBD.participaciones(codigoActividad);
     }
 

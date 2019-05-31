@@ -25,7 +25,7 @@ public class VerListaParticipantes {
     }
 
     public void actualizarDatos() {
-        ModeloParticipaciones mp = new ModeloParticipaciones();
+        ModeloParticipaciones mp = new ModeloParticipaciones(codigoActividad);
         mp.setCodigoActividad(codigoActividad);
         tabla = new JTable();
         tabla.setModel(mp);

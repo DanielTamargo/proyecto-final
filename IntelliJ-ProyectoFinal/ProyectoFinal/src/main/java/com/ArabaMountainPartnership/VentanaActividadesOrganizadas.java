@@ -25,6 +25,7 @@ public class VentanaActividadesOrganizadas {
     private Usuario usuario;
     private List<Actividad> actividadesOrganizadas;
     private int n = 1;
+    private int adm = 1;
 
     public VentanaActividadesOrganizadas() {
         list1.addListSelectionListener(e -> {
@@ -117,6 +118,11 @@ public class VentanaActividadesOrganizadas {
         verComoAdministradorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (n % 2 != 0) {
+                    verComoAdministradorButton.setText("Ver como Usuario");
+                } else {
+                    verComoAdministradorButton.setText("Ver como Administrador");
+                }
                 Socio socio = SocioBD.socio(usuario.getSocio());
                 if (socio.getPerfil() == TipoPerfil.ADMINISTRADOR) {
                     if (n % 2 != 0) {
@@ -137,12 +143,12 @@ public class VentanaActividadesOrganizadas {
         verParticipantesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Actividad actividad = (Actividad) list1.getSelectedValue();
                 VerListaParticipantes vlp = new VerListaParticipantes();
                 JFrame frame = new JFrame("Lista Participantes");
                 frame.setContentPane(vlp.getPanel());
-                Actividad actividad = (Actividad) list1.getSelectedValue();
-                vlp.actualizarDatos();
                 vlp.setCodigoActividad(actividad.getCodigo());
+                vlp.actualizarDatos();
                 vlp.setFrame2(frame);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();

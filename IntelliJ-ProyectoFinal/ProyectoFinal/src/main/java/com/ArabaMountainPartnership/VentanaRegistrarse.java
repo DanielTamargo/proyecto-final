@@ -81,15 +81,15 @@ public class VentanaRegistrarse {
                             if (anyosEntreFechas < 5) {
                                 //mostramos error
                                 JOptionPane.showMessageDialog(null,
-                                        "Error.",
                                         "La edad no puede ser inferior a 4 años.",
+                                        "Error",
                                         JOptionPane.ERROR_MESSAGE);
                             } else {
                                 if (codigoRespons.equalsIgnoreCase("")) {
                                     //mostramos error
                                     JOptionPane.showMessageDialog(null,
-                                            "Error.",
                                             "Si eres menor, tienes que tener un socio responsable.",
+                                            "Error",
                                             JOptionPane.ERROR_MESSAGE);
                                 } else {
                                     boolean estado = false;
@@ -122,13 +122,13 @@ public class VentanaRegistrarse {
                                         Usuario nuevoUsuario = new Usuario(usuario, contrasenya, nuevoSocio.getCodigo());
                                         UsuarioBD.guardar(nuevoUsuario);
                                         JOptionPane.showMessageDialog(null,
-                                                "Proceso realizado.",
-                                                "Se ha registrado el socio correctamente, apunta tu nombre de usuario y contraseña",
+                                                "Se ha registrado el socio correctamente, apunta tu nombre de usuario y contraseña.",
+                                                "Proceso realizado",
                                                 JOptionPane.ERROR_MESSAGE);
                                     } else {
                                         JOptionPane.showMessageDialog(null,
-                                                "Error.",
-                                                "No se ha encontrado el socio con el código " + codigoRespons + ".",
+                                                "No se ha encontrado el socio con el código \" + codigoRespons + \".",
+                                                "Error",
                                                 JOptionPane.ERROR_MESSAGE);
                                         frame5.dispose();
                                     }
@@ -137,10 +137,11 @@ public class VentanaRegistrarse {
                         } else {
                             if (!codigoRespons.equalsIgnoreCase("")) {
                                 JOptionPane.showMessageDialog(null,
-                                        "Error.",
                                         "Eres mayor de edad, elimina el código del socio responsable.",
+                                        "Error",
                                         JOptionPane.ERROR_MESSAGE);
                             } else {
+                                //faltaría comprobar que los datos no estén vacíos
                                 //añadimos el nuevo socio a la base
                                 Socio nuevoSocio = new Socio(
                                         SocioBD.generarCodigo(nombre, apellidos),
@@ -156,22 +157,22 @@ public class VentanaRegistrarse {
                                 Usuario nuevoUsuario = new Usuario(usuario, contrasenya, nuevoSocio.getCodigo());
                                 UsuarioBD.guardar(nuevoUsuario);
                                 JOptionPane.showMessageDialog(null,
-                                        "Proceso realizado.",
                                         "Se ha registrado el socio correctamente, recuerde su usuario y contraseña",
+                                        "Proceso realizado",
                                         JOptionPane.INFORMATION_MESSAGE);
                                 frame5.dispose();
                             }
                         }
                     } else {
                         JOptionPane.showMessageDialog(null,
-                                "Error.",
                                 "El usuario debe ser único.",
+                                "Error",
                                 JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null,
-                            "Error.",
                             "Introduce un número de teléfono, sin caracteres.",
+                            "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }
             }
